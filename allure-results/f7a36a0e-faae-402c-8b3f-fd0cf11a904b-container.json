@@ -1,0 +1,1 @@
+{"uuid":"f7a36a0e-faae-402c-8b3f-fd0cf11a904b","name":"piku.HealthCheck","children":["5be8b990-3cb6-4190-b918-8addaad83cd5"],"befores":[{"name":"setBaseURI","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1729156075854,"stop":1729156076538}],"afters":[],"start":1729156075816,"stop":1729156079062}
