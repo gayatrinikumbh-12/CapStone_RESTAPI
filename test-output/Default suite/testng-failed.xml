@@ -3,12 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="piku.SignUPTest">
+      <class name="piku.LoginAPI">
         <methods>
-          <include name="Verify_SignUPTest"/>
-          <include name="setBaseURI"/>
+          <include name="Verify_LoginAPI"/>
         </methods>
-      </class> <!-- piku.SignUPTest -->
+      </class> <!-- piku.LoginAPI -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
