@@ -15,7 +15,7 @@ import utilities.SignupRequestModel;
 public class SignUPTest extends BaseTest{
 
 	@Test
-	void Verify_SignUPTest()
+	String Verify_SignUPTest()
 	{
 		RandomNumberGenrator RG = new RandomNumberGenrator();
 		 String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
@@ -32,8 +32,11 @@ public class SignUPTest extends BaseTest{
                 .post(signUpEndpoint);
         
         response.prettyPrint();
+        
         assertThat(response.getStatusCode(), Matchers.equalTo(201));
     	assertThat(response.getStatusLine(), Matchers.contains("Created") != null);
+	
+    	return randomEmail;
 	}
 	
 	

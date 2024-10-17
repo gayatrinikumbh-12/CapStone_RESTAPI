@@ -3,6 +3,10 @@
         "signUp": "/api/auth/signup"
     },
     
+    "loginProfile": {
+        "Login": "/api/auth/login"
+    },
+    
     "product": {
     "getProductsList": "/api/products"
     },
