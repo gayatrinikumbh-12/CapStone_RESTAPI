@@ -44,4 +44,9 @@ public class ApiResUtilities {
     }
 
     // ... other header and payload assertions
+    
+    public static void assertResponseBodyHasProperty(Response response, String jsonPath) {
+        boolean isPresent = response.jsonPath().get(jsonPath) != null;
+        assertThat("Expected response body to have property: " + jsonPath, isPresent, equalTo(true));
+    }
 }
