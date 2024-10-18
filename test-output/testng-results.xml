@@ -2,15 +2,15 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-18T14:56:05 IST" name="Default suite" finished-at="2024-10-18T14:56:10 IST" duration-ms="5469">
+  <suite started-at="2024-10-18T18:38:35 IST" name="Default suite" finished-at="2024-10-18T18:38:41 IST" duration-ms="6789">
     <groups>
     </groups>
-    <test started-at="2024-10-18T14:56:05 IST" name="Default test" finished-at="2024-10-18T14:56:10 IST" duration-ms="5469">
+    <test started-at="2024-10-18T18:38:35 IST" name="Default test" finished-at="2024-10-18T18:38:41 IST" duration-ms="6789">
       <class name="piku.LoginAPI">
-        <test-method signature="Verify_LoginAPI()[pri:0, instance:piku.LoginAPI@39ac0c0a]" started-at="2024-10-18T14:56:05 IST" name="Verify_LoginAPI" finished-at="2024-10-18T14:56:10 IST" duration-ms="5333" status="PASS">
+        <test-method signature="verifySuccessfulLoginWithValidCredentials()[pri:0, instance:piku.LoginAPI@39ac0c0a]" started-at="2024-10-18T18:38:35 IST" name="verifySuccessfulLoginWithValidCredentials" finished-at="2024-10-18T18:38:41 IST" duration-ms="6690" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- Verify_LoginAPI -->
+        </test-method> <!-- verifySuccessfulLoginWithValidCredentials -->
       </class> <!-- piku.LoginAPI -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

@@ -52,7 +52,7 @@ public class UserClient  {
         return response;
     }
     
-    public void authenticateUser() {
+    public Response authenticateUser() {
 
     	RestAssured.baseURI = baseUrl;
         RandomNumberGenrator RG = new RandomNumberGenrator();
@@ -72,6 +72,7 @@ public class UserClient  {
                 .post(LoginEndpoint);
         
         LoginResponse.prettyPrint();
+		return LoginResponse;
 
        
     }
