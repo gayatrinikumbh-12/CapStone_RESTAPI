@@ -1,6 +1,7 @@
 package piku;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.contains;
 import static org.testng.Assert.assertNotNull;
 
 import org.hamcrest.Matchers;
@@ -18,7 +19,11 @@ public class ApiResUtilities {
     public static void assertSuccessStatusCode(Response response) {
         assertThat("Expected a success status code of 200 but received", response.statusCode(), equalTo(200));
     }
-
+    
+    public static void assertOKTextCreatedStatusCode(Response response) {
+        assertThat("Expected a  Text code of 201 but received ", response.getStatusLine(), Matchers.containsString("OK"));
+    }
+    
     public static void assertCreatedStatusCode(Response response) {
         assertThat("Expected a Created status code of 201 but received ", response.statusCode(), Matchers.equalTo(201));
     }

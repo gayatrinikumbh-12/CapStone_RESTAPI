@@ -25,9 +25,9 @@ public class LoginAPI extends BaseTest{
 	void verifySuccessfulLoginWithValidCredentials()
 	{
 		 Response response =UserClient.getInstance().authenticateUser();
-		 int statusCode = response.getStatusCode();
-		    assertThat("Expected status code 200 for successful login", statusCode, equalTo(200));
-
+		 //int statusCode = response.getStatusCode();
+		    //assertThat("Expected status code 200 for successful login", statusCode, equalTo(200));
+		    ApiResUtilities.assertSuccessStatusCode(response);
 		    // Include assertions to verify the presence of a user-specific token or identifier in the response
 		   // String userToken = response.jsonPath().getString("data.session.access_token");
 		   // String email = response.jsonPath().get("data.user.email");

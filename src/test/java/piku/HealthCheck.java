@@ -20,11 +20,12 @@ public class HealthCheck extends BaseTest{
 	Response Res = RestAssured.given()
 			        .contentType(ContentType.JSON)
 					.get(uri);
-	System.out.println("knkmk  "+Res);
+	///System.out.println("knkmk  "+Res);
 	
-	int statusCode = Res.getStatusCode();
-	String statusText = Res.getStatusLine();
+	//int statusCode = Res.getStatusCode();
+	//String statusText = Res.getStatusLine();
 	ApiResUtilities.assertSuccessStatusCode(Res);
+	ApiResUtilities.assertOKTextCreatedStatusCode(Res);
 	//assertThat(statusCode, Matchers.equalTo(200));
 //	assertThat("Health check status text is incorrect", statusText, containsString("OK"));
 	//assertThat(statusText, Matchers.contains("ok") != null);
