@@ -22,10 +22,11 @@ public class SignUPTest extends BaseTest{
 	{
 		Response response = UserClient.getInstance().createUser();
 		int statusCode = response.getStatusCode();
-	    assertThat("Unexpected status code", statusCode, equalTo(201));
-
-	    String userId = response.jsonPath().getString("data.userId");
-	    assertNotNull("User ID should be present in the response", userId);
+	    //assertThat("Unexpected status code", statusCode, equalTo(201));
+	    ApiResUtilities.assertCreatedStatusCode(response);
+	   // String userId = response.jsonPath().getString("data.userId");
+	   // assertNotNull("User ID should be present in the response", userId);
+	    ApiResUtilities.assertValueNotNull(response, "data.userID");
 	}
 	
 	

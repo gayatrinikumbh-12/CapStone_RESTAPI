@@ -29,14 +29,15 @@ public class BaseTest {
         // Code to be executed after all tests
 		
     }
-	
-	@AfterTest
-	protected void assertExpectedStatusCode(int expectedStatusCode, Response response) {
-	    assertThat("Unexpected status code", response.getStatusCode(), equalTo(expectedStatusCode));
-	}
+	/*
+	//@AfterTest
+	//protected void assertExpectedStatusCode(int expectedStatusCode, Response response) {
+	//    assertThat("Unexpected status code", response.getStatusCode(), equalTo(expectedStatusCode));
+	//}
 
 	@AfterTest
 	protected void logResponse(Response response) {
 	    response.then().log().all();
 	}
+	*/
 }
