@@ -15,8 +15,9 @@ import utilities.RandomNumberGenrator;
 import utilities.SignupRequestModel;
 
 public class UserClient  {
+	
     private static final UserClient INSTANCE = new UserClient();
-    String baseUrl = PropertyUtils.getProperty("base.url");
+   // String baseUrl = PropertyUtils.getProperty("base.url");
     
     private UserClient() {
         // Private constructor to prevent direct instantiation
@@ -27,10 +28,10 @@ public class UserClient  {
     }
 
     
-
+   
     public Response createUser() {
 
-    	RestAssured.baseURI = baseUrl;
+    	
         RandomNumberGenrator RG = new RandomNumberGenrator();
         String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
         String randomEmail = RG.RandomEmailGenrator();
@@ -54,9 +55,9 @@ public class UserClient  {
     
     public Response authenticateUser() {
 
-    	RestAssured.baseURI = baseUrl;
+    	
         RandomNumberGenrator RG = new RandomNumberGenrator();
-        UserClient uc = new UserClient();
+        UserClient uc = UserClient.getInstance();
         String email =uc.createUser().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");

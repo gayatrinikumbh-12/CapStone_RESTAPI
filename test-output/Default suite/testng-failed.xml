@@ -5,7 +5,9 @@
     <classes>
       <class name="piku.LoginAPI">
         <methods>
-          <include name="Verify_LoginAPI"/>
+          <include name="tearDown"/>
+          <include name="verifySuccessfulLoginWithValidCredentials"/>
+          <include name="setBaseURI"/>
         </methods>
       </class> <!-- piku.LoginAPI -->
     </classes>

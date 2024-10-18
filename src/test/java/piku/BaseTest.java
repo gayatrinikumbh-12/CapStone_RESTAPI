@@ -1,5 +1,6 @@
 package piku;
 
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
@@ -17,5 +18,11 @@ public class BaseTest {
 		RestAssured.baseURI = baseUrl;
 		System.out.println(RestAssured.baseURI );
 
-}
+     }
+	
+	@AfterClass
+    public void tearDown() {
+        // Code to be executed after all tests
+		
+    }
 }
