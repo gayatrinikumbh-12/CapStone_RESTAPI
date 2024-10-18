@@ -20,7 +20,7 @@ public class SignUPTest extends BaseTest{
 	@Test
 	void shouldCreateNewUserSuccessfully()
 	{
-		Response response = UserClient.getInstance().Verify_SignUPTest();
+		Response response = UserClient.getInstance().createUser();
 		int statusCode = response.getStatusCode();
 	    assertThat("Unexpected status code", statusCode, equalTo(201));
 

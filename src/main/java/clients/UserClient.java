@@ -28,7 +28,7 @@ public class UserClient  {
 
     
 
-    public Response Verify_SignUPTest() {
+    public Response createUser() {
 
     	RestAssured.baseURI = baseUrl;
         RandomNumberGenrator RG = new RandomNumberGenrator();
@@ -52,12 +52,12 @@ public class UserClient  {
         return response;
     }
     
-    public void Verify_LoginAPI() {
+    public void authenticateUser() {
 
     	RestAssured.baseURI = baseUrl;
         RandomNumberGenrator RG = new RandomNumberGenrator();
         UserClient uc = new UserClient();
-        String email =uc.Verify_SignUPTest().jsonPath().get("data.user.email");
+        String email =uc.createUser().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
         LoginRequestModel LoginRequest = LoginRequestModel.builder()

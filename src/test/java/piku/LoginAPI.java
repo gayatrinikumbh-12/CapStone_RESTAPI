@@ -22,7 +22,7 @@ public class LoginAPI {
 	@Test
 	void Verify_LoginAPI()
 	{
-		UserClient.getInstance().Verify_LoginAPI();
+		UserClient.getInstance().authenticateUser();
 		
 }
 }
