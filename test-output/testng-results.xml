@@ -2,20 +2,16 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-17T19:07:27 IST" name="Default suite" finished-at="2024-10-17T19:07:32 IST" duration-ms="4343">
+  <suite started-at="2024-10-18T14:56:05 IST" name="Default suite" finished-at="2024-10-18T14:56:10 IST" duration-ms="5469">
     <groups>
     </groups>
-    <test started-at="2024-10-17T19:07:27 IST" name="Default test" finished-at="2024-10-17T19:07:32 IST" duration-ms="4343">
-      <class name="piku.SignUPTest">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.SignUPTest@416c58f5]" started-at="2024-10-17T19:07:27 IST" name="setBaseURI" finished-at="2024-10-17T19:07:28 IST" duration-ms="679" status="PASS">
+    <test started-at="2024-10-18T14:56:05 IST" name="Default test" finished-at="2024-10-18T14:56:10 IST" duration-ms="5469">
+      <class name="piku.LoginAPI">
+        <test-method signature="Verify_LoginAPI()[pri:0, instance:piku.LoginAPI@39ac0c0a]" started-at="2024-10-18T14:56:05 IST" name="Verify_LoginAPI" finished-at="2024-10-18T14:56:10 IST" duration-ms="5333" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- setBaseURI -->
-        <test-method signature="Verify_SignUPTest()[pri:0, instance:piku.SignUPTest@416c58f5]" started-at="2024-10-17T19:07:28 IST" name="Verify_SignUPTest" finished-at="2024-10-17T19:07:31 IST" duration-ms="3521" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- Verify_SignUPTest -->
-      </class> <!-- piku.SignUPTest -->
+        </test-method> <!-- Verify_LoginAPI -->
+      </class> <!-- piku.LoginAPI -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

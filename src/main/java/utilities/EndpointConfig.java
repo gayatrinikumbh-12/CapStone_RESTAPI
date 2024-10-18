@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class EndpointConfig {
-    private static final String CONFIG_FILE = "data/endpoints.json";
+    private static final String CONFIG_FILE = "endpoints.json";
     private static JsonNode jsonNode;
 static {
     try (InputStream inputStream = EndpointConfig.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {

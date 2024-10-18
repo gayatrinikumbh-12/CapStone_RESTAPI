@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 public class HealthCheck extends BaseTest{
 
 	@Test
-	void HealthCheck_verify()
+	void shouldReturnOKForHealthCheck()
 	{
         
 		String uri = "/health-check";
@@ -26,6 +26,7 @@ public class HealthCheck extends BaseTest{
 	String statusText = Res.getStatusLine();
 	
 	assertThat(statusCode, Matchers.equalTo(200));
-	assertThat(statusText, Matchers.contains("ok") != null);
+	assertThat("Health check status text is incorrect", statusText, containsString("OK"));
+	//assertThat(statusText, Matchers.contains("ok") != null);
 	}
 }

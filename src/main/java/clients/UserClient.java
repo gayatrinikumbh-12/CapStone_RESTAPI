@@ -57,7 +57,7 @@ public class UserClient  {
     	RestAssured.baseURI = baseUrl;
         RandomNumberGenrator RG = new RandomNumberGenrator();
         UserClient uc = new UserClient();
-        String email =uc.Verify_SignUPTest().jsonPath().get("data.user.	");
+        String email =uc.Verify_SignUPTest().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
         LoginRequestModel LoginRequest = LoginRequestModel.builder()
