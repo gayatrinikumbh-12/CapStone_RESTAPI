@@ -3,6 +3,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.testng.Assert.assertNotNull;
 
+import org.hamcrest.Matchers;
+
 import io.restassured.response.Response;
 
 public class ApiResUtilities {
@@ -14,19 +16,19 @@ public class ApiResUtilities {
 	 }
 	
     public static void assertSuccessStatusCode(Response response) {
-        assertThat("Unexpected status code", response.statusCode(), equalTo(200));
+        assertThat("Expected a success status code of 200 but received", response.statusCode(), equalTo(200));
     }
 
     public static void assertCreatedStatusCode(Response response) {
-        assertThat("Unexpected status code", response.statusCode(), equalTo(201));
+        assertThat("Expected a Created status code of 201 but received ", response.statusCode(), Matchers.equalTo(201));
     }
 
     public static void assertBadRequestStatusCode(Response response) {
-        assertThat("Unexpected status code", response.statusCode(), equalTo(400));
+        assertThat("Expected a Bad Request code of 400 but received ", response.statusCode(), equalTo(400));
     }
 
     public static void assertUnauthorizedStatusCode(Response response) {
-        assertThat("Unexpected status code", response.statusCode(), equalTo(401));
+        assertThat(" Expected UnauthorizedStatusCode ", response.statusCode(), equalTo(401));
     }
 
     // ... other status code assertions
