@@ -16,8 +16,10 @@ public class ApiResUtilities {
 	 
 	 }
 	
+  
+    
     public static void assertSuccessStatusCode(Response response) {
-        assertThat("Expected a success status code of 200 but received", response.statusCode(), equalTo(200));
+        assertThat("Expected a success status code of 200, but received: " + response.statusCode(), response.statusCode(), equalTo(200));
     }
     
     public static void assertOKTextCreatedStatusCode(Response response) {
@@ -25,15 +27,15 @@ public class ApiResUtilities {
     }
     
     public static void assertCreatedStatusCode(Response response) {
-        assertThat("Expected a Created status code of 201 but received ", response.statusCode(), Matchers.equalTo(201));
+        assertThat("Expected a Created status code of 201 but received :"+  response.statusCode(), response.statusCode(), Matchers.equalTo(201));
     }
 
     public static void assertBadRequestStatusCode(Response response) {
-        assertThat("Expected a Bad Request code of 400 but received ", response.statusCode(), equalTo(400));
+        assertThat("Expected a Bad Request code of 400 but received " + response.statusCode(), response.statusCode(), equalTo(400));
     }
 
     public static void assertUnauthorizedStatusCode(Response response) {
-        assertThat(" Expected UnauthorizedStatusCode ", response.statusCode(), equalTo(401));
+        assertThat(" Expected UnauthorizedStatusCode " + response.statusCode(), response.statusCode(), equalTo(401));
     }
 
     // ... other status code assertions
@@ -43,11 +45,11 @@ public class ApiResUtilities {
     }
 
     public static void assertResponseEquals(Response response, String expectedValue) {
-        assertThat("Response does not match expected value", response.body().asString(), equalTo(expectedValue));
+        assertThat("Response does not match expected value "+response.body().asString(), response.body().asString(), equalTo(expectedValue));
     }
 
     public static void assertHeaderValue(Response response, String headerName, String expectedValue) {
-        assertThat("Unexpected header value", response.header(headerName), equalTo(expectedValue));
+        assertThat("Unexpected header value" +response.header(headerName), response.header(headerName), equalTo(expectedValue));
     }
 
     // ... other header and payload assertions
