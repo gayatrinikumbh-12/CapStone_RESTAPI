@@ -29,7 +29,7 @@ public class UserClient  {
 
     
    
-    public Response createUser() {
+    public static Response createUser() {
 
     	
         RandomNumberGenrator RG = new RandomNumberGenrator();
@@ -56,9 +56,9 @@ public class UserClient  {
     public Response authenticateUser() {
 
     	
-        RandomNumberGenrator RG = new RandomNumberGenrator();
-        UserClient uc = UserClient.getInstance();
-        String email =uc.createUser().jsonPath().get("data.user.email");
+        //RandomNumberGenrator RG = new RandomNumberGenrator();
+        //UserClient uc = UserClient.getInstance();
+        String email =UserClient.createUser().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
         LoginRequestModel LoginRequest = LoginRequestModel.builder()
