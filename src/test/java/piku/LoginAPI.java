@@ -26,8 +26,8 @@ public class LoginAPI extends BaseTest{
 	{
 		 Response response =UserClient.getInstance().authenticateUser();
 		 
-		    ApiResUtilities.assertSuccessStatusCode(response);
-		   
+		    
+		    ApiResUtilities.assertSuccessStatusCode(response,200 , "expected 200 response ");
 		    ApiResUtilities.assertValueNotNull(response,"data.session.access_token");
 		    ApiResUtilities.assertValueNotNull(response,"data.user.email");
 		    ApiResUtilities.assertResponseContains(response, "access_token", "The response does not contain the expected value.");

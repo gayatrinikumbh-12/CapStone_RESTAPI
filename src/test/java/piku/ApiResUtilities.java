@@ -17,15 +17,9 @@ public class ApiResUtilities {
 	 }
 	
   
-	 public static void assertWithMessage(Response response, int expectedStatusCode, String customMessage) {
-	        assertThat(customMessage, response.statusCode(), equalTo(expectedStatusCode));
-	    }
-   
     
     
-    // ... other status code assertions
 
-   
     
     public static void assertResponseContains(Response response, String expectedValue, String customMessage) {
         assertThat(customMessage, response.body().asString(), containsString(expectedValue));
@@ -45,4 +39,25 @@ public class ApiResUtilities {
         boolean isPresent = response.jsonPath().get(jsonPath) != null;
         assertThat("Expected response body to have property: " + jsonPath, isPresent, equalTo(true));
     }
+
+
+
+
+
+
+	public static void assertSuccessStatusCode(Response response, int Stauscode, String message) {
+		// TODO Auto-generated method stub
+		  assertThat(message, response.getStatusCode(), equalTo(Stauscode));
+	}
+
+
+
+
+
+
+	public static void assertTextForStatusCode(Response response, String ExpectedtText, String message) {
+		// TODO Auto-generated method stub
+		assertThat(message, response.getStatusLine(), containsString(ExpectedtText));
+		
+	}
 }

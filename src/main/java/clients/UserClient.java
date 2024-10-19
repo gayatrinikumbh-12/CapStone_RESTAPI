@@ -7,12 +7,12 @@ package clients;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-
+import models.UserSignupRequest;
 import utilities.EndpointConfig;
-import utilities.LoginRequestModel;
+
 import utilities.PropertyUtils;
 import utilities.RandomNumberGenrator;
-import utilities.SignupRequestModel;
+
 
 public class UserClient  {
 	
@@ -36,7 +36,7 @@ public class UserClient  {
         String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
         String randomEmail = RG.RandomEmailGenrator();
 
-        SignupRequestModel signupRequestModel = SignupRequestModel.builder().email(randomEmail).password("123456")
+        UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(randomEmail).password("123456")
 				.build();
        
 
@@ -61,7 +61,7 @@ public class UserClient  {
         String email =UserClient.createUser().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
-        LoginRequestModel LoginRequest = LoginRequestModel.builder()
+        UserSignupRequest LoginRequest = UserSignupRequest.builder()
 			    .email(email).password("123456")
 				.build();
        

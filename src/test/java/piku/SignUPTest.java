@@ -13,7 +13,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
-import utilities.SignupRequestModel;
+
 
 public class SignUPTest extends BaseTest{
 	
@@ -22,9 +22,8 @@ public class SignUPTest extends BaseTest{
 	{
 		Response response = UserClient.getInstance().createUser();
 		
-	    ApiResUtilities.assertCreatedStatusCode(response);
-	   
 	    ApiResUtilities.assertValueNotNull(response, "data.userID");
+	    ApiResUtilities.assertSuccessStatusCode(response,201 , "expected 201 response ");
 	}
 	
 	

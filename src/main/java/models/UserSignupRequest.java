@@ -1,13 +1,13 @@
-package utilities;
+package models;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class LoginRequestModel {
-
+public class UserSignupRequest {
 	
 	private String email;
     private String password;
 }
+
