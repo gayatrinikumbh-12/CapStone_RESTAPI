@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite >
 <suite name="Suite">
-  <test thread-count="5" name="Test">
+  <test name="ParallelTests" parallel="classes" thread-count="2">
+  	<groups>
+        <run>
+            <include name="parallel"/>
+        </run>
+    </groups>
+  
+    <classes>
+      <class name="piku.HealthCheck"/>
+      <class name="piku.SignUPTest"/>
+      <class name="piku.LoginAPI"/>
+      <class name="piku.BaseTest"/>
+    </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -14,7 +14,7 @@ import utilities.PropertyUtils;
 public class BaseTest {
 
 	
-	@BeforeClass
+	@BeforeClass(groups = {"e2e", "parallel"})
 	void setBaseURI()
 	{
 		String baseUrl = PropertyUtils.getProperty("base.url");

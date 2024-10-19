@@ -11,7 +11,7 @@ import static org.hamcrest.Matchers.equalTo;
 import org.testng.annotations.Test;
 
 import clients.UserClient;
-
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 
@@ -20,8 +20,8 @@ public class LoginAPI extends BaseTest{
 	
 	
 	
-
-	@Test
+	@Step("Login with correct cred")
+	@Test(description = "Verify successful login with valid credentials",groups={"parallel"})
 	void verifySuccessfulLoginWithValidCredentials()
 	{
 		 Response response =UserClient.getInstance().authenticateUser();

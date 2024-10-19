@@ -1,5 +1,6 @@
 package piku;
 
+import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -12,7 +13,8 @@ import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 public class HealthCheck extends BaseTest{
 
-	@Test
+	@Step("Check is Application is Up and Running")
+	@Test(groups={"parallel"})
 	void shouldReturnOKForHealthCheck()
 	{
         
