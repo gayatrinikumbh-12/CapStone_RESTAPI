@@ -22,7 +22,7 @@ public class ApiResUtilities {
         assertThat("Expected a success status code of 200, but received: " + response.statusCode(), response.statusCode(), equalTo(200));
     }
     
-    public static void assertOKTextCreatedStatusCode(Response response) {
+    public static void assertTextForCreatedStatusCode(Response response) {
         assertThat("Expected a  Text code of 201 but received ", response.getStatusLine(), Matchers.containsString("OK"));
     }
     
@@ -40,12 +40,14 @@ public class ApiResUtilities {
 
     // ... other status code assertions
 
-    public static void assertResponseContains(Response response, String expectedValue) {
-        assertThat("Response does not contain expected value", response.body().asString(), containsString(expectedValue));
+   
+    
+    public static void assertResponseContains(Response response, String expectedValue, String customMessage) {
+        assertThat(customMessage, response.body().asString(), containsString(expectedValue));
     }
 
-    public static void assertResponseEquals(Response response, String expectedValue) {
-        assertThat("Response does not match expected value "+response.body().asString(), response.body().asString(), equalTo(expectedValue));
+    public static void assertResponseEquals(Response response, String expectedValue, String customMessage) {
+        assertThat(customMessage, response.body().asString(), equalTo(expectedValue));
     }
 
     public static void assertHeaderValue(Response response, String headerName, String expectedValue) {

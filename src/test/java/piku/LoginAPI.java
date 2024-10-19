@@ -34,7 +34,8 @@ public class LoginAPI extends BaseTest{
 		   // assertThat(email,Matchers.notNullValue());
 		    ApiResUtilities.assertValueNotNull(response,"data.session.access_token");
 		    ApiResUtilities.assertValueNotNull(response,"data.user.email");
-		 //   assertNotNull("User token should be present in the response", userToken);
+		    ApiResUtilities.assertResponseContains(response, "access_token", "The response does not contain the expected value.");
+		    //   assertNotNull("User token should be present in the response", userToken);
 		 // System.out.println("UT  "+userToken);
 		    //assertThat("User token should be present and have the expected format", userToken, matchesPattern("^Bearer [\\w-\\.]+(.[\\w-]+)*$")); // Example regex pattern for a token
 	}

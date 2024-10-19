@@ -25,7 +25,7 @@ public class HealthCheck extends BaseTest{
 	//int statusCode = Res.getStatusCode();
 	//String statusText = Res.getStatusLine();
 	ApiResUtilities.assertSuccessStatusCode(Res);
-	ApiResUtilities.assertOKTextCreatedStatusCode(Res);
+	ApiResUtilities.assertTextForCreatedStatusCode(Res);
 	//assertThat(statusCode, Matchers.equalTo(200));
 //	assertThat("Health check status text is incorrect", statusText, containsString("OK"));
 	//assertThat(statusText, Matchers.contains("ok") != null);
