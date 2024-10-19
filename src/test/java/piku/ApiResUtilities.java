@@ -17,27 +17,12 @@ public class ApiResUtilities {
 	 }
 	
   
+	 public static void assertWithMessage(Response response, int expectedStatusCode, String customMessage) {
+	        assertThat(customMessage, response.statusCode(), equalTo(expectedStatusCode));
+	    }
+   
     
-    public static void assertSuccessStatusCode(Response response) {
-        assertThat("Expected a success status code of 200, but received: " + response.statusCode(), response.statusCode(), equalTo(200));
-    }
     
-    public static void assertTextForCreatedStatusCode(Response response) {
-        assertThat("Expected a  Text code of 201 but received ", response.getStatusLine(), Matchers.containsString("OK"));
-    }
-    
-    public static void assertCreatedStatusCode(Response response) {
-        assertThat("Expected a Created status code of 201 but received :"+  response.statusCode(), response.statusCode(), Matchers.equalTo(201));
-    }
-
-    public static void assertBadRequestStatusCode(Response response) {
-        assertThat("Expected a Bad Request code of 400 but received " + response.statusCode(), response.statusCode(), equalTo(400));
-    }
-
-    public static void assertUnauthorizedStatusCode(Response response) {
-        assertThat(" Expected UnauthorizedStatus Code of 401 but recived " + response.statusCode(), response.statusCode(), equalTo(401));
-    }
-
     // ... other status code assertions
 
    
