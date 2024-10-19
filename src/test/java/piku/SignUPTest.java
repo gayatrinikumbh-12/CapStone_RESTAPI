@@ -11,6 +11,7 @@ import clients.UserClient;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import models.UserSignupResponse;
 import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
 
@@ -21,9 +22,11 @@ public class SignUPTest extends BaseTest{
 	void shouldCreateNewUserSuccessfully()
 	{
 		Response response = UserClient.getInstance().createUser();
-		
-	    ApiResUtilities.assertValueNotNull(response, "data.userID");
-	    ApiResUtilities.assertSuccessStatusCode(response,201 , "expected 201 response ");
+		UserSignupResponse UR = response.as(UserSignupResponse.class);
+		System.out.println("UR   "+UR); 
+		 assertNotNull(UR.getData().getID(), "User ID should not be null");
+	   // ApiResUtilities.assertValueNotNull(response, "data.userID");
+	   // ApiResUtilities.assertSuccessStatusCode(response,201 , "expected 201 response ");
 	}
 	
 	

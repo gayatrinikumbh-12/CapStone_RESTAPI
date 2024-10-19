@@ -5,6 +5,8 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.restassured.response.Response;
+
 @lombok.Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserSignupResponse {
@@ -17,7 +19,15 @@ public class UserSignupResponse {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Data {
         private Session session;
+        private  ID ID;
     }
+        
+    @lombok.Data   
+    @JsonIgnoreProperties(ignoreUnknown = true)
+        public static class ID {
+            @JsonProperty("ID")
+            private int ID;
+        }
 
     @lombok.Data
     @JsonIgnoreProperties(ignoreUnknown = true)
