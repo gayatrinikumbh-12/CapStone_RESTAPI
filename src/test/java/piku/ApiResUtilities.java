@@ -35,7 +35,7 @@ public class ApiResUtilities {
     }
 
     public static void assertUnauthorizedStatusCode(Response response) {
-        assertThat(" Expected UnauthorizedStatusCode " + response.statusCode(), response.statusCode(), equalTo(401));
+        assertThat(" Expected UnauthorizedStatus Code of 401 but recived " + response.statusCode(), response.statusCode(), equalTo(401));
     }
 
     // ... other status code assertions
@@ -54,7 +54,7 @@ public class ApiResUtilities {
         assertThat("Unexpected header value" +response.header(headerName), response.header(headerName), equalTo(expectedValue));
     }
 
-    // ... other header and payload assertions
+  
     
     public static void assertResponseBodyHasProperty(Response response, String jsonPath) {
         boolean isPresent = response.jsonPath().get(jsonPath) != null;
