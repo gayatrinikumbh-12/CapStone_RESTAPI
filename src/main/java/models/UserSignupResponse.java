@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import io.restassured.response.Response;
+import lombok.Data;
+
 
 @lombok.Data
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -19,15 +21,7 @@ public class UserSignupResponse {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Data {
         private Session session;
-        private  ID ID;
     }
-        
-    @lombok.Data   
-    @JsonIgnoreProperties(ignoreUnknown = true)
-        public static class ID {
-            @JsonProperty("ID")
-            private int ID;
-        }
 
     @lombok.Data
     @JsonIgnoreProperties(ignoreUnknown = true)

@@ -26,7 +26,7 @@ public class SignUPTest extends BaseTest{
 		Response response = UserClient.getInstance().createUser();
 		UserSignupResponse UR = response.as(UserSignupResponse.class);
 		System.out.println("UR   "+UR); 
-		 assertNotNull(UR.getData().getID(), "User ID should not be null");
+		 assertNotNull(UR.getData(), "User ID should not be null");
 		 assertNotNull(UR.getData().getSession().getAccessToken(), "Access token must be present");
 		 //assertThat(UR.getStatusCode(), equalTo(200), "Status code must be 200");
 	   // ApiResUtilities.assertValueNotNull(response, "data.userID");

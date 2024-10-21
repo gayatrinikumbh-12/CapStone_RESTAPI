@@ -1,6 +1,7 @@
 package piku;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
@@ -9,6 +10,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
 import utilities.PropertyUtils;
 
 public class BaseTest {
@@ -24,20 +26,28 @@ public class BaseTest {
 
      }
 	
+	
+	
 	@AfterClass
     public void tearDown() {
         // Code to be executed after all tests
 		
     }
-	/*
-	//@AfterTest
-	//protected void assertExpectedStatusCode(int expectedStatusCode, Response response) {
-	//    assertThat("Unexpected status code", response.getStatusCode(), equalTo(expectedStatusCode));
-	//}
-
-	@AfterTest
-	protected void logResponse(Response response) {
-	    response.then().log().all();
+	
+	@AfterMethod
+	protected void afterTestMethod() {
+	    // Code for any common post-test execution steps
 	}
-	*/
+
+	protected void assertStatusCode(Response response, int expectedStatusCode) {
+	    assertThat("Expected status code " + expectedStatusCode + ", but was " + response.getStatusCode(),
+	               response.getStatusCode(), equalTo(expectedStatusCode));
+	}
+
+	protected void logResponseBody(Response response) {
+	    response.then().log().body();
+	}
+	
+	
+
 }
