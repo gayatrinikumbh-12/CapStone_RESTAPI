@@ -8,6 +8,8 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.UserSignupRequest;
+import models.UserSignupResponse;
+import utilities.ApiResponseDeserializer;
 import utilities.EndpointConfig;
 
 import utilities.PropertyUtils;
@@ -48,10 +50,13 @@ public class UserClient  {
         
         response.prettyPrint();
         
-       
+       // UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(loginResponse, UserSignupResponse.class);
 	
         return response;
     }
+    
+    
+    
     
     public Response authenticateUser() {
 
@@ -71,14 +76,15 @@ public class UserClient  {
                 .contentType(ContentType.JSON)
                 .body(LoginRequest)
                 .post(LoginEndpoint);
-        
-        LoginResponse.prettyPrint();
-		return LoginResponse;
+        UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(LoginResponse, UserSignupResponse.class);
+       // LoginResponse.prettyPrint();
+       
+        return LoginResponse;
 
        
     }
 
-
+    
     
 
 

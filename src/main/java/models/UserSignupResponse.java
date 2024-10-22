@@ -9,24 +9,34 @@ import io.restassured.response.Response;
 import lombok.Data;
 
 
-@lombok.Data
-@JsonIgnoreProperties(ignoreUnknown = true)
+
+
+
+@Data
 public class UserSignupResponse {
-    private int statusCode;
-    private Data data;
-    private Map<String, String> headers; // Add a field for headers
-
     
-    @lombok.Data
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Data {
-        private Session session;
-    }
+	 private Data data;
+	 private int statusCode;
+	 
+	 @lombok.Data
+	 @JsonIgnoreProperties(ignoreUnknown = true)
+	 public static class Data {
+	        private Session session;
+	        private User user;
+	    }
 
-    @lombok.Data
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Session {
-        @JsonProperty("access_token")
-        private String accessToken;
-    }
+	 @lombok.Data
+	 @JsonIgnoreProperties(ignoreUnknown = true)
+	 public static class Session {
+	        @JsonProperty("access_token")
+	        private String accessToken;
+	    }
+	 
+	 @lombok.Data
+	 @JsonIgnoreProperties(ignoreUnknown = true)
+	 public static class User {
+	        @JsonProperty("id")
+	        private String id;
+	    }
+   
 }

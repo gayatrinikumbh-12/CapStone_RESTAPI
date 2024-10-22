@@ -1,0 +1,1 @@
+{"uuid":"ddbed468-e7eb-4c15-987c-6fac631cc1fe","name":"piku.SignUPTest","children":["1efec79c-5079-479a-a8c8-881d335f6e86"],"befores":[{"name":"setBaseURI","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1729595817861,"stop":1729595818492}],"afters":[],"start":1729595817809,"stop":1729595821946}

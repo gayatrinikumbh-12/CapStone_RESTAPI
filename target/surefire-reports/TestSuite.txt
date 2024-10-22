@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 5.177 s <<< FAILURE! - in TestSuite
+piku.SignUPTest.shouldCreateNewUserSuccessfully  Time elapsed: 0.435 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.JsonNode.path(String)" because "utilities.EndpointConfig.jsonNode" is null
+	at piku.SignUPTest.shouldCreateNewUserSuccessfully(SignUPTest.java:26)
+
+piku.LoginAPI.verifySuccessfulLoginWithValidCredentials  Time elapsed: 0.009 s  <<< FAILURE!
+java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.JsonNode.path(String)" because "utilities.EndpointConfig.jsonNode" is null
+	at piku.LoginAPI.verifySuccessfulLoginWithValidCredentials(LoginAPI.java:27)
+
