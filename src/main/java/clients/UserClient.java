@@ -49,7 +49,7 @@ public class UserClient  {
                 .post(signUpEndpoint);
         
         response.prettyPrint();
-        
+        System.out.println(" piku   "+response.getHeaders());
        // UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(loginResponse, UserSignupResponse.class);
 	
         return response;

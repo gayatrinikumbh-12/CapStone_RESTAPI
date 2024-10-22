@@ -17,6 +17,7 @@ public class UserSignupResponse {
     
 	 private Data data;
 	 private int statusCode;
+	 private Map<String, String>  headers; // Add a field for headers
 	 
 	 @lombok.Data
 	 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -38,5 +39,15 @@ public class UserSignupResponse {
 	        @JsonProperty("id")
 	        private String id;
 	    }
+	 
+	 @lombok.Data
+	 public class ResponseHeaders {
+		 @JsonProperty("statusCode")
+		 private int statusCode;
+		
+		 @JsonProperty("contentType")
+	     private String contentType;
+	     
+	 }
    
 }
