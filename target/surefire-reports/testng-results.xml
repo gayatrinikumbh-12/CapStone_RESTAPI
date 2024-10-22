@@ -2,7 +2,7 @@
 <testng-results ignored="0" total="3" passed="1" failed="2" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-22T16:46:57 IST" name="Suite" finished-at="2024-10-22T16:47:01 IST" duration-ms="4122">
+  <suite started-at="2024-10-22T21:58:28 IST" name="Suite" finished-at="2024-10-22T21:58:31 IST" duration-ms="3179">
     <groups>
       <group name="parallel">
         <method signature="HealthCheck.shouldReturnOKForHealthCheck()[pri:0, instance:piku.HealthCheck@1672fe87]" name="shouldReturnOKForHealthCheck" class="piku.HealthCheck"/>
@@ -10,21 +10,24 @@
         <method signature="SignUPTest.shouldCreateNewUserSuccessfully()[pri:0, instance:piku.SignUPTest@5e3d57c7]" name="shouldCreateNewUserSuccessfully" class="piku.SignUPTest"/>
       </group> <!-- parallel -->
     </groups>
-    <test started-at="2024-10-22T16:46:57 IST" name="ParallelTests" finished-at="2024-10-22T16:47:01 IST" duration-ms="4122">
+    <test started-at="2024-10-22T21:58:28 IST" name="ParallelTests" finished-at="2024-10-22T21:58:31 IST" duration-ms="3179">
       <class name="piku.SignUPTest">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.SignUPTest@5e3d57c7]" started-at="2024-10-22T16:46:57 IST" name="setBaseURI" finished-at="2024-10-22T16:46:58 IST" duration-ms="654" status="PASS">
+        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.SignUPTest@5e3d57c7]" started-at="2024-10-22T21:58:28 IST" name="setBaseURI" finished-at="2024-10-22T21:58:29 IST" duration-ms="675" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBaseURI -->
-        <test-method signature="shouldCreateNewUserSuccessfully()[pri:0, instance:piku.SignUPTest@5e3d57c7]" started-at="2024-10-22T16:46:58 IST" name="shouldCreateNewUserSuccessfully" finished-at="2024-10-22T16:46:58 IST" duration-ms="350" status="FAIL">
-          <exception class="java.lang.NullPointerException">
+        <test-method signature="shouldCreateNewUserSuccessfully()[pri:0, instance:piku.SignUPTest@5e3d57c7]" started-at="2024-10-22T21:58:29 IST" name="shouldCreateNewUserSuccessfully" finished-at="2024-10-22T21:58:29 IST" duration-ms="104" status="FAIL">
+          <exception class="java.lang.Error">
             <message>
-              <![CDATA[Cannot invoke "com.fasterxml.jackson.databind.JsonNode.path(String)" because "utilities.EndpointConfig.jsonNode" is null]]>
+              <![CDATA[Unresolved compilation problem: 
+TestDataBuild cannot be resolved
+]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.JsonNode.path(String)" because "utilities.EndpointConfig.jsonNode" is null
-at utilities.EndpointConfig.getEndpoint(EndpointConfig.java:26)
-at clients.UserClient.createUser(UserClient.java:38)
+              <![CDATA[java.lang.Error: Unresolved compilation problem: 
+TestDataBuild cannot be resolved
+
+at clients.UserClient.createUser(UserClient.java:43)
 at piku.SignUPTest.shouldCreateNewUserSuccessfully(SignUPTest.java:26)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
@@ -41,26 +44,29 @@ at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecut
 at java.base/java.lang.Thread.run(Thread.java:1570)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+          </exception> <!-- java.lang.Error -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shouldCreateNewUserSuccessfully -->
       </class> <!-- piku.SignUPTest -->
       <class name="piku.LoginAPI">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.LoginAPI@732d0d24]" started-at="2024-10-22T16:46:58 IST" name="setBaseURI" finished-at="2024-10-22T16:46:58 IST" duration-ms="7" status="PASS">
+        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.LoginAPI@732d0d24]" started-at="2024-10-22T21:58:29 IST" name="setBaseURI" finished-at="2024-10-22T21:58:29 IST" duration-ms="5" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBaseURI -->
-        <test-method signature="verifySuccessfulLoginWithValidCredentials()[pri:0, instance:piku.LoginAPI@732d0d24]" started-at="2024-10-22T16:46:58 IST" name="verifySuccessfulLoginWithValidCredentials" description="Verify successful login with valid credentials" finished-at="2024-10-22T16:46:58 IST" duration-ms="4" status="FAIL">
-          <exception class="java.lang.NullPointerException">
+        <test-method signature="verifySuccessfulLoginWithValidCredentials()[pri:0, instance:piku.LoginAPI@732d0d24]" started-at="2024-10-22T21:58:29 IST" name="verifySuccessfulLoginWithValidCredentials" description="Verify successful login with valid credentials" finished-at="2024-10-22T21:58:29 IST" duration-ms="4" status="FAIL">
+          <exception class="java.lang.Error">
             <message>
-              <![CDATA[Cannot invoke "com.fasterxml.jackson.databind.JsonNode.path(String)" because "utilities.EndpointConfig.jsonNode" is null]]>
+              <![CDATA[Unresolved compilation problem: 
+TestDataBuild cannot be resolved
+]]>
             </message>
             <full-stacktrace>
-              <![CDATA[java.lang.NullPointerException: Cannot invoke "com.fasterxml.jackson.databind.JsonNode.path(String)" because "utilities.EndpointConfig.jsonNode" is null
-at utilities.EndpointConfig.getEndpoint(EndpointConfig.java:26)
-at clients.UserClient.createUser(UserClient.java:38)
-at clients.UserClient.authenticateUser(UserClient.java:66)
+              <![CDATA[java.lang.Error: Unresolved compilation problem: 
+TestDataBuild cannot be resolved
+
+at clients.UserClient.createUser(UserClient.java:43)
+at clients.UserClient.authenticateUser(UserClient.java:65)
 at piku.LoginAPI.verifySuccessfulLoginWithValidCredentials(LoginAPI.java:27)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
@@ -77,17 +83,17 @@ at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecut
 at java.base/java.lang.Thread.run(Thread.java:1570)
 ]]>
             </full-stacktrace>
-          </exception> <!-- java.lang.NullPointerException -->
+          </exception> <!-- java.lang.Error -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifySuccessfulLoginWithValidCredentials -->
       </class> <!-- piku.LoginAPI -->
       <class name="piku.HealthCheck">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.HealthCheck@1672fe87]" started-at="2024-10-22T16:46:57 IST" name="setBaseURI" finished-at="2024-10-22T16:46:58 IST" duration-ms="654" status="PASS">
+        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku.HealthCheck@1672fe87]" started-at="2024-10-22T21:58:28 IST" name="setBaseURI" finished-at="2024-10-22T21:58:29 IST" duration-ms="675" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBaseURI -->
-        <test-method signature="shouldReturnOKForHealthCheck()[pri:0, instance:piku.HealthCheck@1672fe87]" started-at="2024-10-22T16:46:58 IST" name="shouldReturnOKForHealthCheck" finished-at="2024-10-22T16:47:01 IST" duration-ms="3376" status="PASS">
+        <test-method signature="shouldReturnOKForHealthCheck()[pri:0, instance:piku.HealthCheck@1672fe87]" started-at="2024-10-22T21:58:29 IST" name="shouldReturnOKForHealthCheck" finished-at="2024-10-22T21:58:31 IST" duration-ms="2421" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- shouldReturnOKForHealthCheck -->

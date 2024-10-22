@@ -4,6 +4,7 @@ package clients;
 
 
 
+import data.TestDataBuild;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -34,18 +35,17 @@ public class UserClient  {
     public static Response createUser() {
 
     	
-        RandomNumberGenrator RG = new RandomNumberGenrator();
+       
         String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
-        String randomEmail = RG.RandomEmailGenrator();
-
-        UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(randomEmail).password("123456")
-				.build();
        
 
+        
+       
+        	 UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP();
         // Send POST request and capture the response
         Response response = RestAssured.given()
-                .contentType(ContentType.JSON)
-                .body(signupRequestModel)
+        		.contentType(ContentType.JSON)
+                .body(payloadSignUP)
                 .post(signUpEndpoint);
         
         response.prettyPrint();
@@ -66,10 +66,8 @@ public class UserClient  {
         String email =UserClient.createUser().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
-        UserSignupRequest LoginRequest = UserSignupRequest.builder()
-			    .email(email).password("123456")
-				.build();
        
+        UserSignupRequest LoginRequest = TestDataBuild.payloadLogin();
 
         // Send POST request and capture the response
         Response LoginResponse = RestAssured.given()
@@ -77,7 +75,7 @@ public class UserClient  {
                 .body(LoginRequest)
                 .post(LoginEndpoint);
         UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(LoginResponse, UserSignupResponse.class);
-       // LoginResponse.prettyPrint();
+       System.out.println("userSignupResponse  "+userSignupResponse);
        
         return LoginResponse;
 

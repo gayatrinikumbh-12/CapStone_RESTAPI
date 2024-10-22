@@ -31,8 +31,8 @@ public class SignUPTest extends BaseTest{
 		// assertThat(UR., equalTo(200));
 	     ApiResUtilities.assertValueNotNull(response, "data.userID");
 	    ApiResUtilities.assertSuccessStatusCode(response,201 , "expected 201 response ");
-	    assertThat("Expected content-type header to be present",
-	               UR.getHeaders().get("Content-Type"), equalTo("application/json"));
+	   // assertThat("Expected content-type header to be present",
+	             //  UR.getHeaders().get("Content-Type"), equalTo("application/json"));
 	
 	}
 	

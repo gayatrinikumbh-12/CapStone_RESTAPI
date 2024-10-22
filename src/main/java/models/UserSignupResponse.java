@@ -49,5 +49,7 @@ public class UserSignupResponse {
 	     private String contentType;
 	     
 	 }
+	 
+	
    
 }
