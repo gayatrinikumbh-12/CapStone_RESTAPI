@@ -5,6 +5,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
+
+import data.TestDataBuild;
+
 import static org.testng.Assert.assertNotNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
@@ -34,12 +37,11 @@ public class BaseTest {
 		
     }
 	
-	@AfterMethod
-	protected void afterTestMethod() {
-	    // Code for any common post-test execution steps
-	}
-
 	
+	@AfterMethod
+	  protected void afterTestMethod() {
+	      TestDataBuild.clearThreadLocal(); // You will need to create this method to clear the thread-local variable.
+	  }
 	
 	protected void assertStatusCode(Response response, int expectedStatusCode) {
 	    assertThat("Expected status code " + expectedStatusCode + ", but was " + response.getStatusCode(),

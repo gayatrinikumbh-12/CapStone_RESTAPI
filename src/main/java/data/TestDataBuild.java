@@ -30,4 +30,9 @@ public class TestDataBuild {
         return LoginRequest;
        
 	}
+	
+	public static void clearThreadLocal()
+	{
+		clearThreadLocal();
+	}
 }
