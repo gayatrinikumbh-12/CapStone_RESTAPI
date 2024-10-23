@@ -21,7 +21,7 @@ public class TestDataBuild {
 	
 	public static UserSignupRequest payloadLogin()
 	{
-		 String email =UserClient.createUser().jsonPath().get("data.user.email");
+		 String email =UserClient.getInstance().createUser().jsonPath().get("data.user.email");
 		 UserSignupRequest LoginRequest = UserSignupRequest.builder()
 				    .email(email).password("123456")
 					.build();

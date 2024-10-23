@@ -32,7 +32,7 @@ public class UserClient  {
 
     
    
-    public static Response createUser() {
+    public  Response createUser() {
 
     	
        
@@ -63,7 +63,7 @@ public class UserClient  {
     	
         //RandomNumberGenrator RG = new RandomNumberGenrator();
         //UserClient uc = UserClient.getInstance();
-        String email =UserClient.createUser().jsonPath().get("data.user.email");
+        //String email =UserClient.getInstance().createUser().jsonPath().get("data.user.email");
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
        
