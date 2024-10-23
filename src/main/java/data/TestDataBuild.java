@@ -33,6 +33,6 @@ public class TestDataBuild {
 	
 	public static void clearThreadLocal()
 	{
-		clearThreadLocal();
+		 userEmail.remove();
 	}
 }
