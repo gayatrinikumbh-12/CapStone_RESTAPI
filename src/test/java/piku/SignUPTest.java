@@ -2,6 +2,9 @@ package piku;
 
 
 import static org.testng.Assert.assertNotNull;
+
+import java.io.IOException;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import org.hamcrest.Matchers;
@@ -17,12 +20,14 @@ import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
 
 
+
 public class SignUPTest extends BaseTest{
 	
 	@Step("Creating a new user")
 	@Test(groups={"parallel"})
-	void shouldCreateNewUserSuccessfully()
+	void shouldCreateNewUserSuccessfully() throws IOException
 	{
+		
 		Response response = UserClient.getInstance().createUser();
 		UserSignupResponse UR = response.as(UserSignupResponse.class);
 		System.out.println("UR   "+UR.toString()); 

@@ -1,7 +1,10 @@
 /Users/pradnya/eclipse-workspace/piku/src/main/java/clients/UserClient.java
+/Users/pradnya/eclipse-workspace/piku/src/main/java/data/TestDataBuild.java
+/Users/pradnya/eclipse-workspace/piku/src/main/java/models/UserContainer.java
 /Users/pradnya/eclipse-workspace/piku/src/main/java/models/UserSignupRequest.java
 /Users/pradnya/eclipse-workspace/piku/src/main/java/models/UserSignupResponse.java
 /Users/pradnya/eclipse-workspace/piku/src/main/java/utilities/ApiResponseDeserializer.java
 /Users/pradnya/eclipse-workspace/piku/src/main/java/utilities/EndpointConfig.java
 /Users/pradnya/eclipse-workspace/piku/src/main/java/utilities/PropertyUtils.java
 /Users/pradnya/eclipse-workspace/piku/src/main/java/utilities/RandomNumberGenrator.java
+/Users/pradnya/eclipse-workspace/piku/src/main/java/utilities/TestDataBuilder.java

@@ -11,7 +11,7 @@ public class TestDataBuild {
 	{
 		RandomNumberGenrator RG = new RandomNumberGenrator();
         String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
-        String randomEmail = RG.RandomEmailGenrator();
+        String randomEmail = RG.randomEmail();
 
         UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(randomEmail).password("123456")
 				.build();
