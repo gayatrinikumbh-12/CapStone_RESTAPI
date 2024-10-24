@@ -22,6 +22,7 @@ import utilities.RandomNumberGenrator;
 public class UserClient  {
 	
     private static final UserClient INSTANCE = new UserClient();
+    //protected static  ThreadLocal<String> userEmail = new ThreadLocal<>();
    // String baseUrl = PropertyUtils.getProperty("base.url");
     
     private UserClient() {
@@ -34,7 +35,7 @@ public class UserClient  {
     
     
    
-    public  Response createUser() {
+    public  Response createUser(String Email) {
 
     	
        
@@ -43,7 +44,7 @@ public class UserClient  {
 
         
        
-        	 UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP();
+        	 UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP(Email);
         // Send POST request and capture the response
         Response response = RestAssured.given()
         		.contentType(ContentType.JSON)
@@ -51,7 +52,7 @@ public class UserClient  {
                 .post(signUpEndpoint);
         
         response.prettyPrint();
-        System.out.println(" piku   "+response.getHeaders());
+       // System.out.println(" piku   "+response.getHeaders());
        // UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(loginResponse, UserSignupResponse.class);
 	
         return response;
@@ -60,7 +61,7 @@ public class UserClient  {
     
     
     
-    public Response authenticateUser() {
+    public Response authenticateUser(String Email) {
 
     	
         //RandomNumberGenrator RG = new RandomNumberGenrator();
@@ -69,13 +70,15 @@ public class UserClient  {
     
         String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
        
-        UserSignupRequest LoginRequest = TestDataBuild.payloadLogin();
-
+        UserSignupRequest LoginRequest = TestDataBuild.payloadLogin(Email);
+        System.out.println(LoginRequest.toString());
         // Send POST request and capture the response
         Response LoginResponse = RestAssured.given()
                 .contentType(ContentType.JSON)
                 .body(LoginRequest)
                 .post(LoginEndpoint);
+        LoginResponse.prettyPrint();
+        System.out.println("?????? "+LoginResponse);
         UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(LoginResponse, UserSignupResponse.class);
        System.out.println("userSignupResponse  "+userSignupResponse);
        
@@ -84,7 +87,28 @@ public class UserClient  {
        
     }
 
+    public Response CreateCart(String Email) {
+
+    	Response Response = UserClient.INSTANCE.authenticateUser(Email);
+    	UserSignupResponse UR = Response.as(UserSignupResponse.class);
+		 String Access_Token = UR.getData().getSession().getAccessToken();
     
+       String CreateCart = EndpointConfig.getEndpoint("cart", "createCart");
+        //Response Cart_Creation_response = null;
+        
+        //Add cart 
+        Response Cart_Creation_response = RestAssured.given()
+        		.header("Authorization", "Bearer "+ Access_Token)
+                .contentType(ContentType.JSON)
+                .post(CreateCart);
+     //   Cart_Creation_response.prettyPrint();
+	        
+	       return Cart_Creation_response;
+
+       
+        
+
+    }
     
 
 

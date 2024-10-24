@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>nikumbh</groupId>
   <artifactId>piku</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>..piku_mau</version>
   
    
   <dependencies>
@@ -100,7 +100,12 @@
 	    <version>2.23.1</version>
 	</dependency>
 
-	
+
+	<dependency>
+		<groupId>ultra</groupId>
+		<artifactId>api_ultra</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
   
   <build>

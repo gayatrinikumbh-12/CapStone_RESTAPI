@@ -22,7 +22,9 @@ public class UserSignupResponse {
 	 @lombok.Data
 	 @JsonIgnoreProperties(ignoreUnknown = true)
 	 public static class Data {
+		   @JsonProperty("session")
 	        private Session session;
+		   @JsonProperty("user")
 	        private User user;
 	    }
 
@@ -38,17 +40,20 @@ public class UserSignupResponse {
 	 public static class User {
 	        @JsonProperty("id")
 	        private String id;
+	        @JsonProperty("email")
+	        private String email;
 	    }
 	 
+	
+	 
 	 @lombok.Data
-	 public class ResponseHeaders {
-		 @JsonProperty("statusCode")
-		 private int statusCode;
-		
-		 @JsonProperty("contentType")
-	     private String contentType;
-	     
-	 }
+	 @JsonIgnoreProperties(ignoreUnknown = true)
+	    public static class ResponseHeaders {
+	       
+
+	        @JsonProperty("contentType")
+	        private String contentType;
+	    }
 	 
 	
    

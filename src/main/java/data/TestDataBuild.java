@@ -2,37 +2,45 @@ package data;
 import clients.UserClient;
 import models.UserSignupRequest;
 import utilities.EndpointConfig;
-import utilities.RandomNumberGenrator;
+import utilities.RandomNumberGenrator; 
 
 public class TestDataBuild {
 
-	 private static final ThreadLocal<String> userEmail = new ThreadLocal<>();
-
-	public static UserSignupRequest payloadUserSignUP()
+	
+	
+	public static UserSignupRequest payloadUserSignUP(String Email)
 	{
-		RandomNumberGenrator RG = new RandomNumberGenrator();
+		
         String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
-        String randomEmail = RG.randomEmail();
-        userEmail.set(randomEmail);
-        UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(randomEmail).password("123456")
+      
+        UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(Email).password("123456")
 				.build();
         return signupRequestModel;
        
 	}
 	
-	public static UserSignupRequest payloadLogin()
+	
+	public static UserSignupRequest payloadLogin(String Email)
 	{
-		// String email =UserClient.getInstance().createUser().jsonPath().get("data.user.email");
+		String email =UserClient.getInstance().createUser(Email).jsonPath().get("data.user.email");
 		 UserSignupRequest LoginRequest = UserSignupRequest.builder()
-				    .email(userEmail.get()).password("123456")
+				    .email(email).password("123456")
 					.build();
 
         return LoginRequest;
        
 	}
 	
-	public static void clearThreadLocal()
+	public static UserSignupRequest cart(String Email)
 	{
-		 userEmail.remove();
+		// String email =UserClient.getInstance().createUser().jsonPath().get("data.user.email");
+		 UserSignupRequest LoginRequest = UserSignupRequest.builder()
+				    .email(Email).password("123456")
+					.build();
+
+        return LoginRequest;
+       
 	}
+	
+	
 }
