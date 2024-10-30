@@ -32,12 +32,9 @@ public class UserClient {
 		Response response = RestAssured.given().contentType(ContentType.JSON).body(payloadSignUP).post(signUpEndpoint);
 
 		response.prettyPrint();
-		// System.out.println(" piku "+response.getHeaders());
-		// UserSignupResponse userSignupResponse =
-		// ApiResponseDeserializer.deserializeResponse(loginResponse,
-		// UserSignupResponse.class);
 
-		return response;
+		ApiResponseDeserializer.deserializeResponse(response, UserSignupResponse.class);
+		return (Response) deserializeResponse(response);
 	}
 
 	public Response authenticateUser(String Email) {
@@ -59,7 +56,7 @@ public class UserClient {
 		UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(LoginResponse,
 				UserSignupResponse.class);
 		System.out.println("userSignupResponse  " + userSignupResponse);
-
+		
 		return LoginResponse;
 
 	}
@@ -77,9 +74,18 @@ public class UserClient {
 		Response Cart_Creation_response = RestAssured.given().header("Authorization", "Bearer " + Access_Token)
 				.contentType(ContentType.JSON).post(CreateCart);
 		// Cart_Creation_response.prettyPrint();
-
+		
 		return Cart_Creation_response;
 
 	}
+	
+	 private UserSignupResponse deserializeResponse(Response response) {
+	        UserSignupResponse userResponse = new UserSignupResponse();
+	        userResponse.setStatusCode(response.getStatusCode());
+	        //userResponse.setHeaders(response.getHeaders());
+	        userResponse.setData(response.as(UserSignupResponse.Data.class)); // Deserialize the response body
+
+	        return userResponse;
+	    }
 
 }
