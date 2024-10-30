@@ -4,6 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import utilies.BaseTest;
 import utilities.PropertyUtils;
 
 import static org.hamcrest.MatcherAssert.assertThat; 
@@ -14,7 +15,7 @@ import org.testng.annotations.Test;
 public class HealthCheck extends BaseTest{
 
 	@Step("Check is Application is Up and Running")
-	@Test(groups={"parallel"})
+	@Test(groups={"Login"})
 	void shouldReturnOKForHealthCheck()
 	{
         
@@ -26,8 +27,8 @@ public class HealthCheck extends BaseTest{
 	
 	//int statusCode = Res.getStatusCode();
 	//String statusText = Res.getStatusLine();
-	ApiResUtilities.assertSuccessStatusCode(Res,200 , "expected 200 response ");
-	ApiResUtilities.assertTextForStatusCode(Res,"OK","expected status test as ok");
+	assertSuccessStatusCode(Res,200 , "expected 200 response ");
+	assertTextForStatusCode(Res,"OK","expected status test as ok");
 	//assertThat(statusCode, Matchers.equalTo(200));
 //	assertThat("Health check status text is incorrect", statusText, containsString("OK"));
 	//assertThat(statusText, Matchers.contains("ok") != null);

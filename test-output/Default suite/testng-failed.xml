@@ -8,8 +8,8 @@
           <include name="tearDown"/>
           <include name="setBaseURI"/>
           <include name="afterTestMethod"/>
+          <include name="cart_already_exists_for_user"/>
           <include name="beforeTestMesthod"/>
-          <include name="create_new_cart_for_user"/>
         </methods>
       </class> <!-- piku_mau.CartCreation -->
     </classes>

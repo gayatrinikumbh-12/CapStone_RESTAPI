@@ -16,6 +16,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.UserSignupResponse;
+import utilies.BaseTest;
 import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
 
@@ -24,7 +25,7 @@ import utilities.RandomNumberGenrator;
 public class SignUPTest extends BaseTest{
 	 String email;
 	@Step("Creating a new user")
-	@Test(groups={"parallel"})
+	@Test(groups={"Login"})
 
 	public void shouldCreateNewUserSuccessfully() throws IOException
 	{
@@ -35,9 +36,9 @@ public class SignUPTest extends BaseTest{
 		 assertNotNull(UR.getData().getUser().getId(), "User ID should not be null");
 		assertNotNull(UR.getData().getSession().getAccessToken(), "Access token must be present");
 		// assertThat(UR., equalTo(200));
-	     ApiResUtilities.assertValueNotNull(response, "data.userID");
-	    ApiResUtilities.assertSuccessStatusCode(response,201 , "expected 201 response ");
-	    ApiResUtilities.assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
+	     assertValueNotNull(response, "data.userID");
+	    assertSuccessStatusCode(response,201 , "expected 201 response ");
+	    assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
 	    // assertThat("Expected content-type header to be present",
 	             //  UR.getHeaders().get("Content-Type"), equalTo("application/json"));
 	
