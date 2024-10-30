@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
+import models.UserSignupResponse;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
@@ -35,6 +36,14 @@ public class ApiResponseDeserializer {
 			throw new IllegalArgumentException("Unsupported JSON structure");
 		}
 
+		
+		T responseObject1 = objectMapper.convertValue(jsonResponse, responseType);
+
+	    // Set headers and status code
+	    if (responseObject instanceof UserSignupResponse) {
+	        ((UserSignupResponse)responseObject1).setStatusCode(response.getStatusCode());
+	        ((UserSignupResponse)responseObject1).setHeaders(response.getHeaders());
+	    }
 		// Set the status code in the responseObject if it has a "statusCode" field.
 		setFieldIfExists(responseType, responseObject, "statusCode", response.getStatusCode());
 

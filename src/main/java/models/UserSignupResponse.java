@@ -5,6 +5,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import lombok.Data;
 
@@ -46,6 +47,11 @@ public class UserSignupResponse {
 
 		@JsonProperty("contentType")
 		private String contentType;
+	}
+
+	public void setHeaders(Headers headers2) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
