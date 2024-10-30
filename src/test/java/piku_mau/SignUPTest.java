@@ -32,18 +32,12 @@ public class SignUPTest extends BaseTest {
 		System.out.println("UR   " + UR.toString());
 		Assertions.assertJsonPathExists(response, "data.user.id");
 		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
-
-		assertNotNull(UR.getData().getUser().getId(), "User ID should not be null");
-		assertNotNull(UR.getData().getSession().getAccessToken(), "Access token must be present");
-		// assertThat(UR., equalTo(200));
-		assertValueNotNull(response, "data.userID");
-		Assertions.assertJsonPathIsEmpty(response, "data.userID");
-		assertSuccessStatusCode(response, 201, "expected 201 response ");
-		assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
-		// assertThat("Expected content-type header to be present",
-		// UR.getHeaders().get("Content-Type"), equalTo("application/json"));
-
-		// String email = response.jsonPath().get("data.user.email");
+		Assertions.assertPropertyNotNull(response, "data.user.id", "User ID is NOT NULL");
+		Assertions.assertPropertyNotNull(response, "data.session.access_token", "Access token is NOT NULL");
+		Assertions.assertPropertyNotNull(response, "data.user.id","ID should not be null");
+		Assertions.assertStatusCode(response, 201);
+		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+		
 		email = UR.getData().getUser().getEmail();
 	}
 
