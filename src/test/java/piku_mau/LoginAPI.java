@@ -26,7 +26,7 @@ public class LoginAPI extends BaseTest {
 		Assertions.assertStatusCode(response, 200);
 		Assertions.assertPropertyNotNull(response, "data.session.access_token", "Access tocken is null");
 		Assertions.assertPropertyNotNull(response, "data.user.email", "user email is null");
-		Assertions.assertJsonPathExists(response, "data.session.access_token");
+		
 		
 		
 	}

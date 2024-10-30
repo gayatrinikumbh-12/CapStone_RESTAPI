@@ -30,13 +30,13 @@ public class SignUPTest extends BaseTest {
 		UserSignupResponse UR = response.as(UserSignupResponse.class);
 		Assertions.assertResponseNotEmpty(response);
 		System.out.println("UR   " + UR.toString());
+		
+		Assertions.assertStatusCode(response, 201);
 		Assertions.assertJsonPathExists(response, "data.user.id");
 		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
 		Assertions.assertPropertyNotNull(response, "data.user.id", "User ID is NOT NULL");
 		Assertions.assertPropertyNotNull(response, "data.session.access_token", "Access token is NOT NULL");
-		Assertions.assertPropertyNotNull(response, "data.user.id","ID should not be null");
-		Assertions.assertStatusCode(response, 201);
-		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+	    Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
 		
 		email = UR.getData().getUser().getEmail();
 	}

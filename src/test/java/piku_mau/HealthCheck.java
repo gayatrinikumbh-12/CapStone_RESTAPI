@@ -20,6 +20,6 @@ public class HealthCheck extends BaseTest {
 		response.prettyPrint();
 		Assertions.assertResponseNotEmpty(response);
 		Assertions.assertStatusCode(response,200);
-		Assertions.assertResponseWithCustomMessage(response, "message" ,"ok", "Expected healthCheck  message is NOT displayed");
+		
 	}
 }

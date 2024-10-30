@@ -2,32 +2,32 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-10-30T18:44:35 IST" name="Default suite" finished-at="2024-10-30T18:44:41 IST" duration-ms="6557">
+  <suite started-at="2024-10-30T19:03:49 IST" name="Default suite" finished-at="2024-10-30T19:03:53 IST" duration-ms="4221">
     <groups>
     </groups>
-    <test started-at="2024-10-30T18:44:35 IST" name="Default test" finished-at="2024-10-30T18:44:41 IST" duration-ms="6557">
-      <class name="piku_mau.LoginAPI">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku_mau.LoginAPI@7f0d96f2]" started-at="2024-10-30T18:44:35 IST" name="setBaseURI" finished-at="2024-10-30T18:44:35 IST" duration-ms="648" status="PASS">
+    <test started-at="2024-10-30T19:03:49 IST" name="Default test" finished-at="2024-10-30T19:03:53 IST" duration-ms="4221">
+      <class name="piku_mau.HealthCheck">
+        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku_mau.HealthCheck@2c4d1ac]" started-at="2024-10-30T19:03:49 IST" name="setBaseURI" finished-at="2024-10-30T19:03:49 IST" duration-ms="652" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBaseURI -->
-        <test-method is-config="true" signature="beforeTestMesthod()[pri:0, instance:piku_mau.LoginAPI@7f0d96f2]" started-at="2024-10-30T18:44:35 IST" name="beforeTestMesthod" finished-at="2024-10-30T18:44:36 IST" duration-ms="265" status="PASS">
+        <test-method is-config="true" signature="beforeTestMesthod()[pri:0, instance:piku_mau.HealthCheck@2c4d1ac]" started-at="2024-10-30T19:03:49 IST" name="beforeTestMesthod" finished-at="2024-10-30T19:03:49 IST" duration-ms="275" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTestMesthod -->
-        <test-method signature="verifySuccessfulLoginWithValidCredentials()[pri:0, instance:piku_mau.LoginAPI@7f0d96f2]" started-at="2024-10-30T18:44:36 IST" name="verifySuccessfulLoginWithValidCredentials" finished-at="2024-10-30T18:44:41 IST" duration-ms="5493" status="PASS">
+        <test-method signature="shouldReturnOKForHealthCheck()[pri:0, instance:piku_mau.HealthCheck@2c4d1ac]" started-at="2024-10-30T19:03:50 IST" name="shouldReturnOKForHealthCheck" finished-at="2024-10-30T19:03:53 IST" duration-ms="3138" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- verifySuccessfulLoginWithValidCredentials -->
-        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:piku_mau.LoginAPI@7f0d96f2]" started-at="2024-10-30T18:44:41 IST" name="afterTestMethod" finished-at="2024-10-30T18:44:41 IST" duration-ms="3" status="PASS">
+        </test-method> <!-- shouldReturnOKForHealthCheck -->
+        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:piku_mau.HealthCheck@2c4d1ac]" started-at="2024-10-30T19:03:53 IST" name="afterTestMethod" finished-at="2024-10-30T19:03:53 IST" duration-ms="6" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTestMethod -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:piku_mau.LoginAPI@7f0d96f2]" started-at="2024-10-30T18:44:41 IST" name="tearDown" finished-at="2024-10-30T18:44:41 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:piku_mau.HealthCheck@2c4d1ac]" started-at="2024-10-30T19:03:53 IST" name="tearDown" finished-at="2024-10-30T19:03:53 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- piku_mau.LoginAPI -->
+      </class> <!-- piku_mau.HealthCheck -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

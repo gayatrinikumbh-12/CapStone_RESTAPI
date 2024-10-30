@@ -27,9 +27,9 @@ import static org.hamcrest.Matchers.notNullValue;
 
 public class Assertions {
 
-    public static <T> void assertResponseWithCustomMessage(Response response, String jsonPath, T expectedValue, String failureMessage) {
+    public static <T> void assertResponseWithMatcher(Response response, String jsonPath, Matcher<T> matcher, String failureMessage) {
         T actualValue = response.jsonPath().get(jsonPath);
-        assertThat(actualValue, createEqualityMatcher(expectedValue, failureMessage));
+        assertThat(failureMessage, actualValue, matcher);
     }
 
     public static <T> void assertPropertyNotNull(Response response, String jsonPath, String errorMessage) {
@@ -47,33 +47,33 @@ public class Assertions {
 
             @Override
             protected void describeMismatchSafely(T item, Description mismatchDescription) {
-                mismatchDescription.appendText("was null");
+                mismatchDescription.appendText(String.format("was null (actual value: '%s')", item));
             }
         });
     }
 
     public static void assertStatusCode(Response response, int expectedStatusCode) {
         int actualStatusCode = response.getStatusCode();
-        assertThat(actualStatusCode, createEqualityMatcher(expectedStatusCode, 
-            String.format("Expected status code: '%d'", expectedStatusCode)));
+        assertThat(actualStatusCode, createEqualityMatcher(expectedStatusCode,
+            String.format("Expected status code: '%d', but got: '%d'", expectedStatusCode, actualStatusCode)));
     }
 
     public static void assertStatusLine(Response response, String expectedStatusLine) {
         String actualStatusLine = response.getStatusLine();
         assertThat(actualStatusLine, createEqualityMatcher(expectedStatusLine,
-            String.format("Expected status line: '%s'", expectedStatusLine)));
+            String.format("Expected status line: '%s', but got: '%s'", expectedStatusLine, actualStatusLine)));
     }
 
     public static void assertHeader(Response response, String headerName, String expectedHeaderValue) {
         String actualHeaderValue = response.getHeader(headerName);
         assertThat(actualHeaderValue, createEqualityMatcher(expectedHeaderValue,
-            String.format("Expected header '%s' to be: '%s'", headerName, expectedHeaderValue)));
+            String.format("Expected header '%s' to be: '%s', but got: '%s'", headerName, expectedHeaderValue, actualHeaderValue)));
     }
 
     public static <T> void assertJsonPathValue(Response response, String jsonPath, T expectedValue) {
         T actualValue = response.jsonPath().get(jsonPath);
         assertThat(actualValue, createEqualityMatcher(expectedValue,
-            String.format("Expected JSON path '%s' to return: '%s'", jsonPath, expectedValue)));
+            String.format("Expected JSON path '%s' to return: '%s', but got: '%s'", jsonPath, expectedValue, actualValue)));
     }
 
     public static void assertJsonPathExists(Response response, String jsonPath) {
@@ -159,7 +159,7 @@ public class Assertions {
     public static void assertJsonStructure(Response response, String jsonPath, Map<String, Object> expectedStructure) {
         Map<String, Object> actualStructure = response.jsonPath().get(jsonPath);
         assertThat(actualStructure, createEqualityMatcher(expectedStructure,
-            String.format("Expected JSON structure at path '%s' to match: '%s'", jsonPath, expectedStructure)));
+            String.format("Expected JSON structure at path '%s' to match: '%s', but got: '%s'", jsonPath, expectedStructure, actualStructure)));
     }
 
     public static void assertResponseTimeLessThan(Response response, long maxResponseTime) {
@@ -205,13 +205,13 @@ public class Assertions {
     public static void assertResponseField(Response response, String jsonPath, Object expectedValue) {
         Object actualValue = response.jsonPath().get(jsonPath);
         assertThat(actualValue, createEqualityMatcher(expectedValue,
-            String.format("Expected JSON path '%s' to be '%s'", jsonPath, expectedValue)));
+            String.format("Expected JSON path '%s' to be '%s', but got: '%s'", jsonPath, expectedValue, actualValue)));
     }
 
     public static void assertStatusCodeWithReason(Response response, int expectedStatusCode, String reason) {
         int actualStatusCode = response.getStatusCode();
         assertThat(actualStatusCode, createEqualityMatcher(expectedStatusCode,
-            String.format("Expected status code '%d'. Reason: %s", expectedStatusCode, reason)));
+            String.format("Expected status code '%d'. Reason: %s, but received '%d'", expectedStatusCode, reason, actualStatusCode)));
     }
 
     private static <T> TypeSafeMatcher<T> createEqualityMatcher(T expectedValue, String message) {
