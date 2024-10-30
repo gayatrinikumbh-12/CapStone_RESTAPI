@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.function.Predicate;
 
 import org.hamcrest.Description;
+import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 
@@ -84,6 +85,33 @@ public class Assertions {
 	}
 
 
+	
+
+	public static void assertStatusLine(Response response, String expectedStatusLine) {
+	    String actualStatusLine = response.getStatusLine();
+
+	    assertThat(actualStatusLine, new TypeSafeMatcher<String>() {
+	        @Override
+	        public void describeTo(Description description) {
+	            description.appendText(String.format("Expected status line: '%s'", expectedStatusLine));
+	        }
+
+	        @Override
+	        protected boolean matchesSafely(String item) {
+	            return expectedStatusLine.equals(item); // Compare expected and actual status lines
+	        }
+
+	        @Override
+	        protected void describeMismatchSafely(String item, Description mismatchDescription) {
+	            mismatchDescription.appendText(String.format("but got: '%s'", item));
+	        }
+	    });
+	}
+
+
+
+	
+	
 	public static void assertHeader(Response response, String headerName, String expectedHeaderValue) {
 	    String actualHeaderValue = response.getHeader(headerName);
 	    
@@ -221,37 +249,113 @@ public class Assertions {
 	}
 
 
-    public static void assertJsonStructure(Response response, String jsonPath, Map<String, Object> expectedStructure) {
-        Map<String, Object> actualStructure = response.jsonPath().get(jsonPath);
-        assertThat(String.format("Expected JSON structure at path '%s' to match: '%s', but got: '%s'",
-                                 jsonPath, expectedStructure, actualStructure),
-                   actualStructure, is(expectedStructure));
-    }
+	public static void assertJsonStructure(Response response, String jsonPath, Map<String, Object> expectedStructure) {
+	    Map<String, Object> actualStructure = response.jsonPath().get(jsonPath);
+	    
+	    assertThat(actualStructure, new TypeSafeMatcher<Map<String, Object>>() {
+	        @Override
+	        public void describeTo(Description description) {
+	            description.appendText(String.format("Expected JSON structure at path '%s' to match: '%s'", jsonPath, expectedStructure));
+	        }
 
-    public static void assertResponseTimeLessThan(Response response, long maxResponseTime) {
-        long actualResponseTime = response.getTime();
-        assertThat(String.format("Expected response time to be less than '%d' ms, but got: '%d' ms",
-                                 maxResponseTime, actualResponseTime),
-                   actualResponseTime, lessThan(maxResponseTime));
-    }
+	        @Override
+	        protected boolean matchesSafely(Map<String, Object> item) {
+	            return expectedStructure.equals(item);
+	        }
 
-    public static void assertResponseFieldCondition(Response response, String jsonPath, String condition, String errorMessage) {
-        Object actualValue = response.jsonPath().get(jsonPath);
-        assertThat(String.format("%s: Expected JSON path '%s' to have property '%s'",
-                                 errorMessage, jsonPath, condition),
-                   actualValue, Matchers.hasProperty(condition));
-    }
+	        @Override
+	        protected void describeMismatchSafely(Map<String, Object> item, Description mismatchDescription) {
+	            mismatchDescription.appendText(String.format("but got: '%s'", item));
+	        }
+	    });
+	}
 
-    public static void assertResponseField(Response response, String jsonPath, Object expectedValue) {
-        Object actualValue = response.jsonPath().get(jsonPath);
-        assertThat(String.format("Expected '%s' to be '%s' but was '%s'", jsonPath, expectedValue, actualValue),
-                   actualValue, equalTo(expectedValue));
-    }
 
-    public static void assertStatusCodeWithReason(Response response, int expectedStatusCode, String reason) {
-        int actualStatusCode = response.getStatusCode();
-        assertThat(String.format("Expected status code '%d' but received '%d'. Reason: %s", 
-                                 expectedStatusCode, actualStatusCode, reason), 
-                   actualStatusCode, equalTo(expectedStatusCode));
-    }
+	public static void assertResponseTimeLessThan(Response response, long maxResponseTime) {
+	    long actualResponseTime = response.getTime();
+
+	    assertThat(actualResponseTime, new TypeSafeMatcher<Long>() {
+	        @Override
+	        public void describeTo(Description description) {
+	            description.appendText(String.format("Expected response time to be less than '%d' ms", maxResponseTime));
+	        }
+
+	        @Override
+	        protected boolean matchesSafely(Long item) {
+	            return item < maxResponseTime;
+	        }
+
+	        @Override
+	        protected void describeMismatchSafely(Long item, Description mismatchDescription) {
+	            mismatchDescription.appendText(String.format("but got: '%d' ms", item));
+	        }
+	    });
+	}
+
+
+	public static void assertResponseFieldCondition(Response response, String jsonPath, String condition, String errorMessage) {
+	    Object actualValue = response.jsonPath().get(jsonPath);
+
+	    assertThat(actualValue, new TypeSafeMatcher<Object>() {
+	        @Override
+	        public void describeTo(Description description) {
+	            description.appendText(String.format("%s: Expected JSON path '%s' to have property '%s'", errorMessage, jsonPath, condition));
+	        }
+
+	        @Override
+	        protected boolean matchesSafely(Object item) {
+	            return item != null && Matchers.hasProperty(condition).matches(item);
+	        }
+
+	        @Override
+	        protected void describeMismatchSafely(Object item, Description mismatchDescription) {
+	            mismatchDescription.appendText(String.format("but it does not have property '%s'", condition));
+	        }
+	    });
+	}
+
+
+	public static void assertResponseField(Response response, String jsonPath, Object expectedValue) {
+	    Object actualValue = response.jsonPath().get(jsonPath);
+
+	    assertThat(actualValue, new TypeSafeMatcher<Object>() {
+	        @Override
+	        public void describeTo(Description description) {
+	            description.appendText(String.format("Expected JSON path '%s' to be '%s'", jsonPath, expectedValue));
+	        }
+
+	        @Override
+	        protected boolean matchesSafely(Object item) {
+	            return expectedValue.equals(item);
+	        }
+
+	        @Override
+	        protected void describeMismatchSafely(Object item, Description mismatchDescription) {
+	            mismatchDescription.appendText(String.format("but was '%s'", item));
+	        }
+	    });
+	}
+
+
+	public static void assertStatusCodeWithReason(Response response, int expectedStatusCode, String reason) {
+	    int actualStatusCode = response.getStatusCode();
+
+	    assertThat(actualStatusCode, new TypeSafeMatcher<Integer>() {
+	        @Override
+	        public void describeTo(Description description) {
+	            description.appendText(String.format("Expected status code '%d'", expectedStatusCode));
+	        }
+
+	        @Override
+	        protected boolean matchesSafely(Integer item) {
+	            return expectedStatusCode == item;
+	        }
+
+	        @Override
+	        protected void describeMismatchSafely(Integer item, Description mismatchDescription) {
+	            mismatchDescription.appendText(String.format("but received '%d'. Reason: %s", item, reason));
+	        }
+	    });
+	}
+
 }
