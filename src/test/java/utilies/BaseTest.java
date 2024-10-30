@@ -5,7 +5,6 @@ import org.testng.annotations.AfterMethod;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 
 import static org.testng.Assert.assertNotNull;
 
@@ -20,16 +19,16 @@ import io.restassured.response.Response;
 import utilities.PropertyUtils;
 import utilities.RandomNumberGenrator;
 
-public class BaseTest {
+public abstract class BaseTest {
 
 	protected static ThreadLocal<String> userEmail = new ThreadLocal<>();
 
 	@BeforeClass
-	void setBaseURI() {
+	public void setBaseURI() {
 		String baseUrl = PropertyUtils.getProperty("base.url");
-
+		System.out.println(baseUrl);
 		RestAssured.baseURI = baseUrl;
-		System.out.println(RestAssured.baseURI);
+		
 
 	}
 

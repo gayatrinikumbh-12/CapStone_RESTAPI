@@ -1,6 +1,5 @@
 package piku_mau;
 
-
 import static org.testng.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -21,36 +20,31 @@ import utilies.BaseTest;
 import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
 
+public class SignUPTest extends BaseTest {
+	String email;
 
-
-public class SignUPTest extends BaseTest{
-	 String email;
-	@Step("Creating a new user")
-	@Test(groups={"Login"})
-
-	public void shouldCreateNewUserSuccessfully() throws IOException
-	{
+	@Test
+	public void shouldCreateNewUserSuccessfully() throws IOException {
 		userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail());
 		UserSignupResponse UR = response.as(UserSignupResponse.class);
-		   Assertions.assertResponseNotEmpty(response);
-		System.out.println("UR   "+UR.toString()); 
-		 Assertions.assertJsonPathExists(response, "data.user.id");
-		 Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
-	
-		 assertNotNull(UR.getData().getUser().getId(), "User ID should not be null");
+		Assertions.assertResponseNotEmpty(response);
+		System.out.println("UR   " + UR.toString());
+		Assertions.assertJsonPathExists(response, "data.user.id");
+		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+
+		assertNotNull(UR.getData().getUser().getId(), "User ID should not be null");
 		assertNotNull(UR.getData().getSession().getAccessToken(), "Access token must be present");
 		// assertThat(UR., equalTo(200));
-	     assertValueNotNull(response, "data.userID");
-	  
-	    assertSuccessStatusCode(response,201 , "expected 201 response ");
-	    assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
-	    // assertThat("Expected content-type header to be present",
-	             //  UR.getHeaders().get("Content-Type"), equalTo("application/json"));
-	
-	   // String email = response.jsonPath().get("data.user.email");
-	   email = UR.getData().getUser().getEmail();
+		assertValueNotNull(response, "data.userID");
+
+		assertSuccessStatusCode(response, 201, "expected 201 response ");
+		assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
+		// assertThat("Expected content-type header to be present",
+		// UR.getHeaders().get("Content-Type"), equalTo("application/json"));
+
+		// String email = response.jsonPath().get("data.user.email");
+		email = UR.getData().getUser().getEmail();
 	}
-	
-	
+
 }

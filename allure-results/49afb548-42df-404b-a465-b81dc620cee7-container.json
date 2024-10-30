@@ -1,0 +1,1 @@
+{"uuid":"49afb548-42df-404b-a465-b81dc620cee7","name":"piku_mau.SignUPTest","children":["c501db04-62f5-4e43-a8cb-03f477d79b64"],"befores":[],"afters":[{"name":"tearDown","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1730279774750,"stop":1730279774751}],"start":1730279771932,"stop":1730279774756}

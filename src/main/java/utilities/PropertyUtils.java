@@ -6,18 +6,18 @@ import java.util.Properties;
 
 public class PropertyUtils {
 
-    private static final String CONFIG_PROPERTY_FILE_PATH = "src/main/resources/config.properties";
-    private static Properties properties = new Properties();
+	private static final String CONFIG_PROPERTY_FILE_PATH = "src/main/resources/config.properties";
+	private static Properties properties = new Properties();
 
-    static {
-        try (FileInputStream configFile = new FileInputStream(CONFIG_PROPERTY_FILE_PATH)) {
-            properties.load(configFile);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+	static {
+		try (FileInputStream configFile = new FileInputStream(CONFIG_PROPERTY_FILE_PATH)) {
+			properties.load(configFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    public static String getProperty(String propertyName) {
-        return properties.getProperty(propertyName);
-    }
+	public static String getProperty(String propertyName) {
+		return properties.getProperty(propertyName);
+	}
 }
