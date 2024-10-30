@@ -16,6 +16,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.UserSignupResponse;
+import utilies.Assertions;
 import utilies.BaseTest;
 import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
@@ -32,11 +33,16 @@ public class SignUPTest extends BaseTest{
 		userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail());
 		UserSignupResponse UR = response.as(UserSignupResponse.class);
+		   Assertions.assertResponseNotEmpty(response);
 		System.out.println("UR   "+UR.toString()); 
+		 Assertions.assertJsonPathExists(response, "data.user.id");
+		 Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+	
 		 assertNotNull(UR.getData().getUser().getId(), "User ID should not be null");
 		assertNotNull(UR.getData().getSession().getAccessToken(), "Access token must be present");
 		// assertThat(UR., equalTo(200));
 	     assertValueNotNull(response, "data.userID");
+	  
 	    assertSuccessStatusCode(response,201 , "expected 201 response ");
 	    assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
 	    // assertThat("Expected content-type header to be present",

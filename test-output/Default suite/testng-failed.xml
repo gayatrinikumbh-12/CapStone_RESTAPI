@@ -3,15 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="piku_mau.CartCreation">
+      <class name="piku_mau.HealthCheck">
         <methods>
-          <include name="tearDown"/>
-          <include name="setBaseURI"/>
-          <include name="afterTestMethod"/>
-          <include name="cart_already_exists_for_user"/>
           <include name="beforeTestMesthod"/>
+          <include name="shouldReturnOKForHealthCheck"/>
+          <include name="tearDown"/>
+          <include name="afterTestMethod"/>
         </methods>
-      </class> <!-- piku_mau.CartCreation -->
+      </class> <!-- piku_mau.HealthCheck -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

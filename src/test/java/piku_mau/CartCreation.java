@@ -10,6 +10,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.CartRequest;
 import models.UserSignupResponse;
+import utilies.Assertions;
 import utilies.BaseTest;
 
 
@@ -25,7 +26,7 @@ public class CartCreation extends BaseTest {
 		
 	System.out.println("hhhhhhhhhhh======");
 			response.prettyPrint();
-			
+			  Assertions.assertResponseNotEmpty(response);
 	        
 			 assertSuccessStatusCode(response,201 , "expected 201 response ");
 			 assertTextForStatusCode(response,"Created" , "expected Created text response ");
@@ -40,6 +41,7 @@ public class CartCreation extends BaseTest {
 		//Response response1 = UserClient.getInstance().createUser();
 		 Response response = UserClient.getInstance().CreateCart(Email);
 		 response.prettyPrint();
+		  Assertions.assertResponseNotEmpty(response);
 		CartRequest UR = response.as(CartRequest.class)	; 
 		String CreatedUser = UR.getUser_id();
 		System.out.println("piku "+CreatedUser);
