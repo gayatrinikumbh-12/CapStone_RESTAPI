@@ -63,7 +63,7 @@ public class ApiResponseDeserializer {
             field.setAccessible(false);
         } catch (NoSuchFieldException | IllegalAccessException e) {
             // Print stack trace if there's an error accessing the field.
-            e.printStackTrace();
+        	 throw new RuntimeException("Failed to set value for the field: " + fieldName, e);
         }
     }
 
