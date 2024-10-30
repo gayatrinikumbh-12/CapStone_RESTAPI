@@ -37,7 +37,7 @@ public class SignUPTest extends BaseTest {
 		assertNotNull(UR.getData().getSession().getAccessToken(), "Access token must be present");
 		// assertThat(UR., equalTo(200));
 		assertValueNotNull(response, "data.userID");
-
+		Assertions.assertJsonPathIsEmpty(response, "data.userID");
 		assertSuccessStatusCode(response, 201, "expected 201 response ");
 		assertHeaderValue(response, "Content-Type", "application/json; charset=utf-8");
 		// assertThat("Expected content-type header to be present",

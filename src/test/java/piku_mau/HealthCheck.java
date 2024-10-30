@@ -17,9 +17,12 @@ public class HealthCheck extends BaseTest {
 		
 		String uri = "/health-check";
 		Response response = RestAssured.given().contentType(ContentType.JSON).get(uri);
+		response.prettyPrint();
 		Assertions.assertResponseNotEmpty(response);
 		assertSuccessStatusCode(response, 200, "expected 200 response ");
+		Assertions.assertStatusCode(response,200);
 		assertTextForStatusCode(response, "OK", "expected status test as ok");
 
+		Assertions.assertResponseWithCustomMessage(response, "message" ,"ok", "Expected healthCheck  message is NOT displayed");
 	}
 }
