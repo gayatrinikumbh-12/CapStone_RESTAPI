@@ -12,8 +12,6 @@ import utilities.EndpointConfig;
 public class UserClient {
 
 	private static final UserClient INSTANCE = new UserClient();
-	// protected static ThreadLocal<String> userEmail = new ThreadLocal<>();
-	// String baseUrl = PropertyUtils.getProperty("base.url");
 
 	private UserClient() {
 		// Private constructor to prevent direct instantiation
@@ -30,20 +28,15 @@ public class UserClient {
 		UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP(Email);
 		// Send POST request and capture the response
 		Response response = RestAssured.given().contentType(ContentType.JSON).body(payloadSignUP).post(signUpEndpoint);
-		
-		 UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(response, UserSignupResponse.class);
+
+		UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(response,
+				UserSignupResponse.class);
 		response.prettyPrint();
 
-		
 		return response;
 	}
 
 	public Response authenticateUser(String Email) {
-
-		// RandomNumberGenrator RG = new RandomNumberGenrator();
-		// UserClient uc = UserClient.getInstance();
-		// String email
-		// =UserClient.getInstance().createUser().jsonPath().get("data.user.email");
 
 		String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
 
@@ -57,7 +50,7 @@ public class UserClient {
 		UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(LoginResponse,
 				UserSignupResponse.class);
 		System.out.println("userSignupResponse  " + userSignupResponse);
-		
+
 		return LoginResponse;
 
 	}
@@ -69,24 +62,22 @@ public class UserClient {
 		String Access_Token = UR.getData().getSession().getAccessToken();
 
 		String CreateCart = EndpointConfig.getEndpoint("cart", "createCart");
-		// Response Cart_Creation_response = null;
 
 		// Add cart
 		Response Cart_Creation_response = RestAssured.given().header("Authorization", "Bearer " + Access_Token)
 				.contentType(ContentType.JSON).post(CreateCart);
-		// Cart_Creation_response.prettyPrint();
-		
+
 		return Cart_Creation_response;
 
 	}
-	
-	 private UserSignupResponse deserializeResponse(Response response) {
-	        UserSignupResponse userResponse = new UserSignupResponse();
-	        userResponse.setStatusCode(response.getStatusCode());
-	        //userResponse.setHeaders(response.getHeaders());
-	        userResponse.setData(response.as(UserSignupResponse.Data.class)); // Deserialize the response body
 
-	        return userResponse;
-	    }
+	private UserSignupResponse deserializeResponse(Response response) {
+		UserSignupResponse userResponse = new UserSignupResponse();
+		userResponse.setStatusCode(response.getStatusCode());
+		// userResponse.setHeaders(response.getHeaders());
+		userResponse.setData(response.as(UserSignupResponse.Data.class)); // Deserialize the response body
+
+		return userResponse;
+	}
 
 }

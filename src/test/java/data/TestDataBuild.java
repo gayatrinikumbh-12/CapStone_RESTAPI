@@ -3,7 +3,6 @@ package data;
 import clients.UserClient;
 import models.UserSignupRequest;
 import utilities.EndpointConfig;
-import utilities.RandomNumberGenrator;
 
 public class TestDataBuild {
 
@@ -25,8 +24,7 @@ public class TestDataBuild {
 	}
 
 	public static UserSignupRequest cart(String Email) {
-		// String email
-		// =UserClient.getInstance().createUser().jsonPath().get("data.user.email");
+
 		UserSignupRequest LoginRequest = UserSignupRequest.builder().email(Email).password("123456").build();
 
 		return LoginRequest;
