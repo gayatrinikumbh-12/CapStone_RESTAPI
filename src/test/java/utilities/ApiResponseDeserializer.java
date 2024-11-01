@@ -2,6 +2,7 @@ package utilities;
 
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,34 +26,12 @@ public class ApiResponseDeserializer {
 		Object jsonResponse = response.getBody().jsonPath().get();
 
 		T responseObject;
-		// Check if the JSON response is a Map, which indicates it's a JSON object.
-		if (jsonResponse instanceof Map) {
-			// Convert the JSON object to the specified responseType.
-			responseObject = objectMapper.convertValue(jsonResponse, responseType);
-			System.out.println("responseObject  " + responseObject);
-		} else {
-			// Throw exception if the JSON structure is not supported (i.e., not a JSON
-			// object).
-			throw new IllegalArgumentException("Unsupported JSON structure");
-		}
-
 		
-		T responseObject1 = objectMapper.convertValue(jsonResponse, responseType);
-
-	    // Set headers and status code
-	    if (responseObject instanceof UserSignupResponse) {
-	        ((UserSignupResponse)responseObject1).setStatusCode(response.getStatusCode());
-	        ((UserSignupResponse)responseObject1).setHeaders(response.getHeaders());
-	    }
-		// Set the status code in the responseObject if it has a "statusCode" field.
-		setFieldIfExists(responseType, responseObject, "statusCode", response.getStatusCode());
-
-		// Convert the response headers to a Map and set it in the responseObject if it
-		// has a "headers" field.
-		Map<String, String> headersMap = convertHeadersToMap(response.getHeaders());
-		setFieldIfExists(responseType, responseObject, "headers", headersMap);
-
-		return responseObject;
+	
+	    responseObject = objectMapper.convertValue(response.getBody().jsonPath().get(), responseType);
+	    ((UserSignupResponse) responseObject).setStatusCode(response.getStatusCode());
+	    ((UserSignupResponse) responseObject).setHeaders(new Headers((List<Header>) response.getHeaders())); // Change Map to Headers type
+	    return responseObject;
 	}
 
 	// Private method to set a field's value in the responseObject if the field

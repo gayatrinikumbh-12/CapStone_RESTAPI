@@ -4,6 +4,8 @@ package models;
 import static org.testng.Assert.assertNotNull;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import org.hamcrest.Matchers;
@@ -23,8 +25,8 @@ public class UserSignupResponse {
 
 	private Data data;
 	private int statusCode;
-	private Map<String, String> headers; // Add a field for headers
-
+	 // Add a field for headers
+	private Headers headers;
 	@lombok.Data
 	@JsonIgnoreProperties(ignoreUnknown = true)
 	public static class Data {
@@ -51,17 +53,16 @@ public class UserSignupResponse {
 	}
 
 	
-
-	public void setHeaders(Headers headers2) {
-		// TODO Auto-generated method stub
-		 for (Header header : headers2) {
-		        if (header.getName().equalsIgnoreCase("Content-Type")) {
-		            headers.put("Content-Type", header.getValue());
-		            break; // Assuming only one Content-Type header is expected
-		        }
-		    }
-		
+	public Map<String, String> getHeadersAsMap() {
+	    Map<String, String> headersMap = new HashMap<>();
+	    for (Header header : headers) {
+	        headersMap.put(header.getName(), header.getValue());
+	    }
+	    return headersMap;
 	}
+	
+
+
 	
 	public void assertUserCreatedSuccessfully() {
 		

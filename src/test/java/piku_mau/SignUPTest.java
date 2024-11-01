@@ -1,5 +1,6 @@
 package piku_mau;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 import java.io.IOException;
@@ -13,6 +14,7 @@ import clients.UserClient;
 import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import models.UserSignupResponse;
 import utilies.AssertionsUtil;
@@ -43,7 +45,10 @@ public class SignUPTest extends BaseTest {
 		AssertionsUtil.assertPropertyNotNull(response, "data.user.id", "User ID is NOT NULL");
 		AssertionsUtil.assertPropertyNotNull(response, "data.session.access_token", "Access token is NOT NULL");
 	    AssertionsUtil.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
-		
+	    Headers headers = response.getHeaders();
+
+	    assertNotNull(headers.get("Content-Type"), "Content-Type header should not be null");
+	    assertEquals(headers.getValue("Content-Type"), "application/json; charset=utf-8", "Unexpected Content-Type");
 		email = UR.getData().getUser().getEmail();
 	}
 
