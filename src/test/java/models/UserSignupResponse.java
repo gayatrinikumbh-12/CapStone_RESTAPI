@@ -68,9 +68,7 @@ public class UserSignupResponse {
 		
 		assertNotNull(this.getData().getUser().getId(), "User ID should not be null");
         assertNotNull(this.getData().getSession().getAccessToken(), "Access token must be present");
-        int statusCode = this.getStatusCode();
-        Assert.assertEquals(statusCode, 201, "Expected status code to be 201");
-       
+        assertThat("Expected status code to be 201 for successful user creation.", this.getStatusCode(), equalTo(201));
        
     }
 

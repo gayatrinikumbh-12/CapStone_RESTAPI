@@ -30,10 +30,7 @@ public class SignUPTest extends BaseTest {
 		// Using the new assertion method within the POJO
 		userSignupResponse.assertUserCreatedSuccessfully();
 
-		AssertionsUtil.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
-
 		Headers headers = response.getHeaders();
-
 		assertNotNull(headers.get("Content-Type"), "Content-Type header should not be null");
 		assertEquals(headers.getValue("Content-Type"), "application/json; charset=utf-8", "Unexpected Content-Type");
 		email = UR.getData().getUser().getEmail();
