@@ -5,6 +5,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import lombok.Data;
@@ -41,16 +42,16 @@ public class UserSignupResponse {
 		private String email;
 	}
 
-	@lombok.Data
-	@JsonIgnoreProperties(ignoreUnknown = true)
-	public static class ResponseHeaders {
-
-		@JsonProperty("contentType")
-		private String contentType;
-	}
+	
 
 	public void setHeaders(Headers headers2) {
 		// TODO Auto-generated method stub
+		 for (Header header : headers2) {
+		        if (header.getName().equalsIgnoreCase("Content-Type")) {
+		            headers.put("Content-Type", header.getValue());
+		            break; // Assuming only one Content-Type header is expected
+		        }
+		    }
 		
 	}
 

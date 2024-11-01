@@ -31,6 +31,9 @@ public class SignUPTest extends BaseTest {
 		Assertions.assertResponseNotEmpty(response);
 		System.out.println("UR   " + UR.toString());
 		
+		Assertions.assertResponseNotEmpty(response);
+	       Assertions.assertStatusCode(response, 201);
+	       Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
 		Assertions.assertStatusCode(response, 201);
 		Assertions.assertJsonPathExists(response, "data.user.id");
 		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
