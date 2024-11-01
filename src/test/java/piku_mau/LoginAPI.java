@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import clients.UserClient;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
-import utilies.Assertions;
+import utilies.AssertionsUtil;
 import utilies.BaseTest;
 
 public class LoginAPI extends BaseTest {
@@ -22,10 +22,10 @@ public class LoginAPI extends BaseTest {
 		// Response response2 = UserClient.getInstance().createUser();
 		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail());
 
-		Assertions.assertResponseNotEmpty(response);
-		Assertions.assertStatusCode(response, 200);
-		Assertions.assertPropertyNotNull(response, "data.session.access_token", "Access tocken is null");
-		Assertions.assertPropertyNotNull(response, "data.user.email", "user email is null");
+		AssertionsUtil.assertResponseNotEmpty(response);
+		AssertionsUtil.assertStatusCode(response, 200);
+		AssertionsUtil.assertPropertyNotNull(response, "data.session.access_token", "Access tocken is null");
+		AssertionsUtil.assertPropertyNotNull(response, "data.user.email", "user email is null");
 		
 		
 		

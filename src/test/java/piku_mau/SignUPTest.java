@@ -15,7 +15,7 @@ import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.UserSignupResponse;
-import utilies.Assertions;
+import utilies.AssertionsUtil;
 import utilies.BaseTest;
 import utilities.EndpointConfig;
 import utilities.RandomNumberGenrator;
@@ -28,18 +28,21 @@ public class SignUPTest extends BaseTest {
 		userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail());
 		UserSignupResponse UR = response.as(UserSignupResponse.class);
-		Assertions.assertResponseNotEmpty(response);
+		AssertionsUtil.assertResponseNotEmpty(response);
 		System.out.println("UR   " + UR.toString());
-		
-		Assertions.assertResponseNotEmpty(response);
-	       Assertions.assertStatusCode(response, 201);
-	       Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
-		Assertions.assertStatusCode(response, 201);
-		Assertions.assertJsonPathExists(response, "data.user.id");
-		Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
-		Assertions.assertPropertyNotNull(response, "data.user.id", "User ID is NOT NULL");
-		Assertions.assertPropertyNotNull(response, "data.session.access_token", "Access token is NOT NULL");
-	    Assertions.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
+
+        // Using the new assertion method within the POJO
+        userSignupResponse.assertUserCreatedSuccessfully();
+		AssertionsUtil.assertResponseNotEmpty(response);
+	       AssertionsUtil.assertStatusCode(response, 201);
+	       AssertionsUtil.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+		AssertionsUtil.assertStatusCode(response, 201);
+		AssertionsUtil.assertJsonPathExists(response, "data.user.id");
+		AssertionsUtil.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
+		AssertionsUtil.assertPropertyNotNull(response, "data.user.id", "User ID is NOT NULL");
+		AssertionsUtil.assertPropertyNotNull(response, "data.session.access_token", "Access token is NOT NULL");
+	    AssertionsUtil.assertHeader(response, "Content-Type", "application/json; charset=utf-8");
 		
 		email = UR.getData().getUser().getEmail();
 	}

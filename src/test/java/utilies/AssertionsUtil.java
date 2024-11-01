@@ -25,7 +25,7 @@ import io.restassured.response.Response;
 
 import static org.hamcrest.Matchers.notNullValue;
 
-public class Assertions {
+public class AssertionsUtil {
 
     public static <T> void assertResponseWithMatcher(Response response, String jsonPath, Matcher<T> matcher, String failureMessage) {
         T actualValue = response.jsonPath().get(jsonPath);

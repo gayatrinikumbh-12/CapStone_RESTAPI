@@ -10,7 +10,7 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import models.CartRequest;
 import models.UserSignupResponse;
-import utilies.Assertions;
+import utilies.AssertionsUtil;
 import utilies.BaseTest;
 
 
@@ -21,9 +21,9 @@ public class CartCreation extends BaseTest {
 		// Response response1 = UserClient.getInstance().createUser();
 		Response response = UserClient.getInstance().CreateCart(BaseTest.getUserEmail());
 		response.prettyPrint();
-		Assertions.assertResponseNotEmpty(response);
-		Assertions.assertStatusCode(response, 201);
-		Assertions.assertStatusLine(response, "HTTP/1.1 201 Created");
+		AssertionsUtil.assertResponseNotEmpty(response);
+		AssertionsUtil.assertStatusCode(response, 201);
+		AssertionsUtil.assertStatusLine(response, "HTTP/1.1 201 Created");
 		
 
 	}
@@ -33,7 +33,7 @@ public class CartCreation extends BaseTest {
 		String Email = BaseTest.getUserEmail();
 		Response response = UserClient.getInstance().CreateCart(Email);
 		response.prettyPrint();
-		Assertions.assertResponseNotEmpty(response);
+		AssertionsUtil.assertResponseNotEmpty(response);
 		CartRequest UR = response.as(CartRequest.class);
 		String CreatedUser = UR.getUser_id();
 		System.out.println("piku " + CreatedUser);

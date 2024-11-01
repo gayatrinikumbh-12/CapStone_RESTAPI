@@ -1,6 +1,13 @@
 package models;
 
+
+import static org.testng.Assert.assertNotNull;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import java.util.Map;
+
+import org.hamcrest.Matchers;
+import org.testng.Assert;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -9,6 +16,7 @@ import io.restassured.http.Header;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import lombok.Data;
+import utilies.AssertionsUtil;
 
 @Data
 public class UserSignupResponse {
@@ -54,5 +62,16 @@ public class UserSignupResponse {
 		    }
 		
 	}
+	
+	public void assertUserCreatedSuccessfully() {
+		
+		assertNotNull(this.getData().getUser().getId(), "User ID should not be null");
+        assertNotNull(this.getData().getSession().getAccessToken(), "Access token must be present");
+        int statusCode = this.getStatusCode();
+        Assert.assertEquals(statusCode, 201, "Expected status code to be 201");
+       
+       
+    }
+
 
 }

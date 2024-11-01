@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import utilies.Assertions;
+import utilies.AssertionsUtil;
 import utilies.BaseTest;
 import utilities.PropertyUtils;
 
@@ -18,8 +18,8 @@ public class HealthCheck extends BaseTest {
 		String uri = "/health-check";
 		Response response = RestAssured.given().contentType(ContentType.JSON).get(uri);
 		response.prettyPrint();
-		Assertions.assertResponseNotEmpty(response);
-		Assertions.assertStatusCode(response,200);
+		AssertionsUtil.assertResponseNotEmpty(response);
+		AssertionsUtil.assertStatusCode(response,200);
 		
 	}
 }
