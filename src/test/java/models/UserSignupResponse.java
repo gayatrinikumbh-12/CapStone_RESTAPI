@@ -70,8 +70,7 @@ public class UserSignupResponse {
         assertNotNull(this.getData().getSession().getAccessToken(), "Access token must be present");
        int Code = this.getStatusCode();
        System.out.println("yes "+Code);
-        //assertThat("Expected status code to be 201 for successful user creation. Actual status code: " + this.getStatusCode(), 
-              //  this.getStatusCode(), equalTo(201));
+     
     }
 
 

@@ -25,8 +25,7 @@ public class CartRequest {
         assertNotNull(this.getCreated_at(), "created at string  be present");
        int Code = this.getStatusCode();
        System.out.println("cart status code ---- "+Code);
-        //assertThat("Expected status code to be 201 for successful user creation. Actual status code: " + this.getStatusCode(), 
-              //  this.getStatusCode(), equalTo(201));
+      
     }
 
 
