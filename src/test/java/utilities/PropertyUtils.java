@@ -6,7 +6,7 @@ import java.util.Properties;
 
 public class PropertyUtils {
 
-	private static final String CONFIG_PROPERTY_FILE_PATH = "src/main/resources/config.properties";
+	private static final String CONFIG_PROPERTY_FILE_PATH = "src/test/resources/config.properties";
 	private static Properties properties = new Properties();
 
 	static {

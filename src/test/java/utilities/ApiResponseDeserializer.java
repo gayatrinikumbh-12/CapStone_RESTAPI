@@ -20,42 +20,35 @@ public class ApiResponseDeserializer {
 	// Generic method to deserialize the response body to a specified type
 	// (responseType).
 	public static <T> T deserializeResponse(Response response, Class<T> responseType) {
-		// ObjectMapper is used to map JSON to Java objects.
-		ObjectMapper objectMapper = new ObjectMapper();
-		// Extract the JSON response body.
-		Object jsonResponse = response.getBody().jsonPath().get();
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    Object jsonResponse = response.getBody().jsonPath().get();
 
-		T responseObject;
-		
-		
-	
-	    responseObject = objectMapper.convertValue(response.getBody().jsonPath().get(), responseType);
-	    ((UserSignupResponse) responseObject).setStatusCode(response.getStatusCode());
-	    ((UserSignupResponse) responseObject).setHeaders(new Headers((List<Header>) response.getHeaders())); // Change Map to Headers type
+	    T responseObject = objectMapper.convertValue(jsonResponse, responseType);
+
+	    if (responseObject instanceof UserSignupResponse) {
+	        ((UserSignupResponse) responseObject).setStatusCode(response.getStatusCode());
+	        ((UserSignupResponse) responseObject).setHeaders(response.getHeaders()); // Direct assignment of Headers
+	    }
+
 	    return responseObject;
 	}
-
 	// Private method to set a field's value in the responseObject if the field
 	// exists.
-	private static <T> void setFieldIfExists(Class<T> responseType, T responseObject, String fieldName, Object value) {
-		try {
-			// Get the declared field by name.
-			System.out.println("responseType  " + responseType);
-			System.out.println("responseObject  " + responseType);
-			System.out.println("fieldName" + fieldName);
-			Field field = responseType.getDeclaredField(fieldName);
-
-			// Make the field accessible (in case it is private or protected).
-			field.setAccessible(true);
-			// Set the value of the field in the responseObject.
-			field.set(responseObject, value);
-			// Reset the field's accessibility to its original state.
-			field.setAccessible(false);
-		} catch (NoSuchFieldException | IllegalAccessException e) {
-			// Print stack trace if there's an error accessing the field.
-			throw new RuntimeException("Failed to set value for the field: " + fieldName, e);
+	private static <T> void setFieldIfExists(Class<T> responseType, T responseObject, String fieldName, Object value) throws NoSuchFieldException, IllegalAccessException {
+		  if (value != null) {
+		    Field field = responseType.getDeclaredField(fieldName);
+		    Class<?> fieldType = field.getType();
+		    if (fieldType.isAssignableFrom(value.getClass())) {
+		      // Only set the field if value's type matches or is a subclass of the field type
+		      field.setAccessible(true);
+		      field.set(responseObject, value);
+		      field.setAccessible(false);
+		    } else {
+		      // Log a warning or throw a more specific exception if types don't match
+		      System.out.println("Warning: Field type mismatch for " + fieldName + ". Expected: " + fieldType + ", Received: " + value.getClass());
+		    }
+		  }
 		}
-	}
 
 	// Converts Headers object from io.restassured.http.Headers to a Map<String,
 	// String>.

@@ -28,7 +28,7 @@ public class UserClient {
 		UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP(Email);
 		// Send POST request and capture the response
 		Response response = RestAssured.given().contentType(ContentType.JSON).body(payloadSignUP).post(signUpEndpoint);
-
+		response.prettyPrint();
 		UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(response,
 				UserSignupResponse.class);
 		response.prettyPrint();

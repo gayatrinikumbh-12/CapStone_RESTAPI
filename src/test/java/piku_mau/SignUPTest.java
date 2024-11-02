@@ -22,9 +22,6 @@ public class SignUPTest extends BaseTest {
 	public void shouldCreateNewUserSuccessfully() throws IOException {
 		userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail());
-		UserSignupResponse UR = response.as(UserSignupResponse.class);
-		AssertionsUtil.assertResponseNotEmpty(response);
-		System.out.println("UR   " + UR.toString());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
 
 		// Using the new assertion method within the POJO
@@ -33,7 +30,7 @@ public class SignUPTest extends BaseTest {
 		Headers headers = response.getHeaders();
 		assertNotNull(headers.get("Content-Type"), "Content-Type header should not be null");
 		assertEquals(headers.getValue("Content-Type"), "application/json; charset=utf-8", "Unexpected Content-Type");
-		email = UR.getData().getUser().getEmail();
+		email = userSignupResponse.getData().getUser().getEmail();
 	}
 
 }

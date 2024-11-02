@@ -9,6 +9,7 @@ import clients.UserClient;
 
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
+import models.UserSignupResponse;
 import utilies.AssertionsUtil;
 import utilies.BaseTest;
 
@@ -17,8 +18,13 @@ public class LoginAPI extends BaseTest {
 	@Test
 	public void verifySuccessfulLoginWithValidCredentials() {
 		// Response response2 = UserClient.getInstance().createUser();
+		
 		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail());
+		System.out.println("login yes "+response.prettyPrint());
+		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
 
+		// Using the new assertion method within the POJO
+		userSignupResponse.assertUserCreatedSuccessfully();
 		AssertionsUtil.assertResponseNotEmpty(response);
 		AssertionsUtil.assertStatusCode(response, 200);
 		AssertionsUtil.assertPropertyNotNull(response, "data.session.access_token", "Access tocken is null");

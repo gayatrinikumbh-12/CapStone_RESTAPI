@@ -21,7 +21,13 @@ public class CartCreation extends BaseTest {
 		// Response response1 = UserClient.getInstance().createUser();
 		Response response = UserClient.getInstance().CreateCart(BaseTest.getUserEmail());
 		response.prettyPrint();
-		AssertionsUtil.assertResponseNotEmpty(response);
+		
+		CartRequest CartResponse = response.as(CartRequest.class);
+
+		// Using the new assertion method within the POJO
+		CartResponse.assertCartCreatedSuccessfully();
+
+		
 		AssertionsUtil.assertStatusCode(response, 201);
 		AssertionsUtil.assertStatusLine(response, "HTTP/1.1 201 Created");
 		
