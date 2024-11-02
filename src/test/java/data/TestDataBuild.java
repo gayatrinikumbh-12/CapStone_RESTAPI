@@ -1,6 +1,7 @@
 package data;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.github.javafaker.Faker;
 
 import clients.UserClient;
 import models.UserSignupRequest;
@@ -11,12 +12,14 @@ public class TestDataBuild {
 
 	public static UserSignupRequest payloadUserSignUP(String Email) {
 
-		//String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
-		 JsonNode validUsers = TestDataFetcher.getTestDataNode("validUsers");
-	        String email_data = validUsers.get(0).get("email").asText();
-	        String password_data = validUsers.get(0).get("password").asText();
+		String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
 		
-		UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(email_data).password(password_data).build();
+		Faker faker = new Faker();
+	    String email_f = faker.internet().emailAddress();
+	    String password_f = faker.internet().password(8, 16);
+		
+	       // String email_data = TestDataManager.getRandomValidEmail();
+		UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(email_f).password(password_f).build();
 		return signupRequestModel;
 
 	}
