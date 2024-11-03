@@ -21,7 +21,7 @@ public class SignUPTest extends BaseTest {
 	@Test
 	public void shouldCreateNewUserSuccessfully() throws IOException {
 		userEmail.get();
-		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail());
+		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
 
 		// Using the new assertion method within the POJO

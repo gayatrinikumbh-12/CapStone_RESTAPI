@@ -10,31 +10,29 @@ import utilities.TestDataFetcher;
 
 public class TestDataBuild {
 
-	public static UserSignupRequest payloadUserSignUP(String Email) {
+	public static UserSignupRequest payloadUserSignUP(String Email, String password) {
 
 		String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
 		
-		Faker faker = new Faker();
-	    String email_f = faker.internet().emailAddress();
-	    String password_f = faker.internet().password(8, 16);
 		
 	       // String email_data = TestDataManager.getRandomValidEmail();
-		UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(email_f).password(password_f).build();
+		UserSignupRequest signupRequestModel = UserSignupRequest.builder().email(Email).password(password).build();
 		return signupRequestModel;
+		
 
 	}
 
-	public static UserSignupRequest payloadLogin(String Email) {
-		String email = UserClient.getInstance().createUser(Email).jsonPath().get("data.user.email");
-		UserSignupRequest LoginRequest = UserSignupRequest.builder().email(email).password("123456").build();
+	public static UserSignupRequest payloadLogin(String Email, String password) {
+		String email = UserClient.getInstance().createUser(Email, password).jsonPath().get("data.user.email");
+		UserSignupRequest LoginRequest = UserSignupRequest.builder().email(Email).password(password).build();
 
 		return LoginRequest;
 
 	}
 
-	public static UserSignupRequest cart(String Email) {
+	public static UserSignupRequest cart(String Email,  String password) {
 
-		UserSignupRequest LoginRequest = UserSignupRequest.builder().email(Email).password("123456").build();
+		UserSignupRequest LoginRequest = UserSignupRequest.builder().email(Email).password(password).build();
 
 		return LoginRequest;
 

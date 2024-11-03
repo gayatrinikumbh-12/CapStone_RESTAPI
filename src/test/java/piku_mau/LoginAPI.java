@@ -19,7 +19,7 @@ public class LoginAPI extends BaseTest {
 	public void verifySuccessfulLoginWithValidCredentials() {
 		// Response response2 = UserClient.getInstance().createUser();
 		
-		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail());
+		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		System.out.println("login yes "+response.prettyPrint());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
 

@@ -21,11 +21,11 @@ public class UserClient {
 		return INSTANCE;
 	}
 
-	public Response createUser(String Email) {
+	public Response createUser(String Email, String Password) {
 
 		String signUpEndpoint = EndpointConfig.getEndpoint("auth", "signUp");
 
-		UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP(Email);
+		UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP(Email, Password);
 		// Send POST request and capture the response
 		Response response = RestAssured.given().contentType(ContentType.JSON).body(payloadSignUP).post(signUpEndpoint);
 		response.prettyPrint();
@@ -36,11 +36,11 @@ public class UserClient {
 		return response;
 	}
 
-	public Response authenticateUser(String Email) {
+	public Response authenticateUser(String Email, String Password) {
 
 		String LoginEndpoint = EndpointConfig.getEndpoint("loginProfile", "Login");
 
-		UserSignupRequest LoginRequest = TestDataBuild.payloadLogin(Email);
+		UserSignupRequest LoginRequest = TestDataBuild.payloadLogin(Email, Password);
 		System.out.println(LoginRequest.toString());
 		// Send POST request and capture the response
 		Response LoginResponse = RestAssured.given().contentType(ContentType.JSON).body(LoginRequest)
@@ -55,9 +55,9 @@ public class UserClient {
 
 	}
 
-	public Response CreateCart(String Email) {
+	public Response CreateCart(String Email, String Password) {
 
-		Response Response = UserClient.INSTANCE.authenticateUser(Email);
+		Response Response = UserClient.INSTANCE.authenticateUser(Email, Password);
 		UserSignupResponse UR = Response.as(UserSignupResponse.class);
 		String Access_Token = UR.getData().getSession().getAccessToken();
 

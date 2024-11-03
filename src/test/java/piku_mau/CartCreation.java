@@ -19,7 +19,7 @@ public class CartCreation extends BaseTest {
 	@Test
 	void create_new_cart_for_user() throws IOException {
 		// Response response1 = UserClient.getInstance().createUser();
-		Response response = UserClient.getInstance().CreateCart(BaseTest.getUserEmail());
+		Response response = UserClient.getInstance().CreateCart(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		response.prettyPrint();
 		
 		CartRequest CartResponse = response.as(CartRequest.class);
@@ -37,7 +37,8 @@ public class CartCreation extends BaseTest {
 	@Test
 	void cart_already_exists_for_user() throws IOException {
 		String Email = BaseTest.getUserEmail();
-		Response response = UserClient.getInstance().CreateCart(Email);
+		String Password = BaseTest.getuserPassword();
+		Response response = UserClient.getInstance().CreateCart(Email,Password);
 		response.prettyPrint();
 		AssertionsUtil.assertResponseNotEmpty(response);
 		CartRequest UR = response.as(CartRequest.class);
@@ -47,7 +48,7 @@ public class CartCreation extends BaseTest {
 		// now use same email to create cart
 
 		// Response response1 = UserClient.getInstance().createUser();
-		Response responseForSameEmail = UserClient.getInstance().CreateCart(Email);
+		Response responseForSameEmail = UserClient.getInstance().CreateCart(Email,Password);
 		responseForSameEmail.prettyPrint();
 
 		String expectedMsg = responseForSameEmail.jsonPath().get("error");

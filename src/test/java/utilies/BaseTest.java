@@ -6,6 +6,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 
+import com.github.javafaker.Faker;
+
 import static org.testng.Assert.assertNotNull;
 
 import org.hamcrest.Matchers;
@@ -22,7 +24,8 @@ import utilities.RandomNumberGenrator;
 public abstract class BaseTest {
 
 	protected static ThreadLocal<String> userEmail = new ThreadLocal<>();
-
+	protected static ThreadLocal<String> userPassword = new ThreadLocal<>();
+	
 	@BeforeClass
 	public void setBaseURI() {
 		String baseUrl = PropertyUtils.getProperty("base.url");
@@ -41,15 +44,26 @@ public abstract class BaseTest {
 	@BeforeMethod
 	protected void beforeTestMesthod() {
 
-		RandomNumberGenrator RG = new RandomNumberGenrator();
-		String randomEmail = RG.randomEmail();
-		userEmail.set(randomEmail);
+		//RandomNumberGenrator RG = new RandomNumberGenrator();
+		//String randomEmail = RG.randomEmail();
+		
+
+		Faker faker = new Faker();
+	    String email_f = faker.internet().emailAddress();
+	    String password_f = faker.internet().password(8, 16);
+		userEmail.set(email_f);
+		userPassword.set(password_f);
 
 	}
 
 	public static String getUserEmail() {
 		return userEmail.get();
 	}
+	
+	public static String getuserPassword() {
+		return userPassword.get();
+	}
+
 
 	@AfterMethod(groups = { "Login" })
 	protected void afterTestMethod() {

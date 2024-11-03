@@ -1,12 +1,11 @@
 package piku_mau;
 
-import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import utilies.AssertionsUtil;
 import utilies.BaseTest;
-import utilities.PropertyUtils;
+
 
 import org.testng.annotations.Test;
 
