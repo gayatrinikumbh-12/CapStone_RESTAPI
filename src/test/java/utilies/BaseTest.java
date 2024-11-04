@@ -1,15 +1,21 @@
 package utilies;
 
+import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import com.github.javafaker.Faker;
 
 import static org.testng.Assert.assertNotNull;
 
+import java.io.StringWriter;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hamcrest.Matchers;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -17,7 +23,9 @@ import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import piku_mau.SignUPTest;
 
+import java.io.PrintWriter;
 import utilities.PropertyUtils;
 import utilities.RandomNumberGenrator;
 
@@ -25,6 +33,7 @@ public abstract class BaseTest {
 
 	protected static ThreadLocal<String> userEmail = new ThreadLocal<>();
 	protected static ThreadLocal<String> userPassword = new ThreadLocal<>();
+	private static final Logger logger = LogManager.getLogger(BaseTest.class);
 	
 	@BeforeClass
 	public void setBaseURI() {
@@ -44,6 +53,8 @@ public abstract class BaseTest {
 	@BeforeMethod
 	protected void beforeTestMesthod() {
 
+		
+		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 		//RandomNumberGenrator RG = new RandomNumberGenrator();
 		//String randomEmail = RG.randomEmail();
 		
@@ -55,7 +66,21 @@ public abstract class BaseTest {
 		userPassword.set(password_f);
 
 	}
+	
+	@AfterMethod
+	protected void AfterTestMesthod(ITestResult result) {
 
+		if(result.getStatus()==ITestResult.FAILURE)
+		{
+			Throwable t = result.getThrowable();
+			StringWriter error = new StringWriter();
+			t.printStackTrace(new PrintWriter(error));
+			logger.info(error.toString());
+		}
+
+	}
+	
+	
 	public static String getUserEmail() {
 		return userEmail.get();
 	}
@@ -71,6 +96,8 @@ public abstract class BaseTest {
 		userEmail.remove();
 
 	}
+	
+	
 
 	protected void assertStatusCode(Response response, int expectedStatusCode) {
 		assertThat("Expected status code " + expectedStatusCode + ", but was " + response.getStatusCode(),

@@ -1,33 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-03T13:44:20 IST" name="Default suite" finished-at="2024-11-03T13:44:28 IST" duration-ms="7204">
+  <suite started-at="2024-11-04T19:44:36 IST" name="Default suite" finished-at="2024-11-04T19:44:41 IST" duration-ms="4950">
     <groups>
     </groups>
-    <test started-at="2024-11-03T13:44:20 IST" name="Default test" finished-at="2024-11-03T13:44:28 IST" duration-ms="7204">
-      <class name="piku_mau.CartCreation">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku_mau.CartCreation@545b995e]" started-at="2024-11-03T13:44:20 IST" name="setBaseURI" finished-at="2024-11-03T13:44:21 IST" duration-ms="618" status="PASS">
+    <test started-at="2024-11-04T19:44:36 IST" name="Default test" finished-at="2024-11-04T19:44:41 IST" duration-ms="4950">
+      <class name="piku_mau.SignUPTest">
+        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku_mau.SignUPTest@27494e46]" started-at="2024-11-04T19:44:36 IST" name="setBaseURI" finished-at="2024-11-04T19:44:37 IST" duration-ms="499" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBaseURI -->
-        <test-method is-config="true" signature="beforeTestMesthod()[pri:0, instance:piku_mau.CartCreation@545b995e]" started-at="2024-11-03T13:44:21 IST" name="beforeTestMesthod" finished-at="2024-11-03T13:44:21 IST" duration-ms="267" status="PASS">
+        <test-method is-config="true" signature="beforeTestMesthod()[pri:0, instance:piku_mau.SignUPTest@27494e46]" started-at="2024-11-04T19:44:37 IST" name="beforeTestMesthod" finished-at="2024-11-04T19:44:37 IST" duration-ms="203" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTestMesthod -->
-        <test-method signature="create_new_cart_for_user()[pri:0, instance:piku_mau.CartCreation@545b995e]" started-at="2024-11-03T13:44:21 IST" name="create_new_cart_for_user" finished-at="2024-11-03T13:44:28 IST" duration-ms="6154" status="PASS">
+        <test-method signature="shouldCreateNewUserSuccessfully()[pri:0, instance:piku_mau.SignUPTest@27494e46]" started-at="2024-11-04T19:44:37 IST" name="shouldCreateNewUserSuccessfully" finished-at="2024-11-04T19:44:41 IST" duration-ms="4041" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- create_new_cart_for_user -->
-        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:piku_mau.CartCreation@545b995e]" started-at="2024-11-03T13:44:28 IST" name="afterTestMethod" finished-at="2024-11-03T13:44:28 IST" duration-ms="3" status="PASS">
+        </test-method> <!-- shouldCreateNewUserSuccessfully -->
+        <test-method is-config="true" signature="AfterTestMesthod(org.testng.ITestResult)[pri:0, instance:piku_mau.SignUPTest@27494e46]" started-at="2024-11-04T19:44:41 IST" name="AfterTestMesthod" finished-at="2024-11-04T19:44:41 IST" duration-ms="7" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=shouldCreateNewUserSuccessfully status=SUCCESS method=SignUPTest.shouldCreateNewUserSuccessfully()[pri:0, instance:piku_mau.SignUPTest@27494e46] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- AfterTestMesthod -->
+        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:piku_mau.SignUPTest@27494e46]" started-at="2024-11-04T19:44:41 IST" name="afterTestMethod" finished-at="2024-11-04T19:44:41 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTestMethod -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:piku_mau.CartCreation@545b995e]" started-at="2024-11-03T13:44:28 IST" name="tearDown" finished-at="2024-11-03T13:44:28 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:piku_mau.SignUPTest@27494e46]" started-at="2024-11-04T19:44:41 IST" name="tearDown" finished-at="2024-11-04T19:44:41 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- piku_mau.CartCreation -->
+      </class> <!-- piku_mau.SignUPTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -1,5 +1,7 @@
 package clients;
 
+import com.listener.RestAssuredListener;
+
 import data.TestDataBuild;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -27,7 +29,8 @@ public class UserClient {
 
 		UserSignupRequest payloadSignUP = TestDataBuild.payloadUserSignUP(Email, Password);
 		// Send POST request and capture the response
-		Response response = RestAssured.given().contentType(ContentType.JSON).body(payloadSignUP).post(signUpEndpoint);
+		Response response = RestAssured.given()
+							.filter(new RestAssuredListener()).contentType(ContentType.JSON).body(payloadSignUP).post(signUpEndpoint);
 		response.prettyPrint();
 		UserSignupResponse userSignupResponse = ApiResponseDeserializer.deserializeResponse(response,
 				UserSignupResponse.class);
@@ -43,7 +46,9 @@ public class UserClient {
 		UserSignupRequest LoginRequest = TestDataBuild.payloadLogin(Email, Password);
 		System.out.println(LoginRequest.toString());
 		// Send POST request and capture the response
-		Response LoginResponse = RestAssured.given().contentType(ContentType.JSON).body(LoginRequest)
+		Response LoginResponse = RestAssured.given()
+				.filter(new RestAssuredListener())
+				.contentType(ContentType.JSON).body(LoginRequest)
 				.post(LoginEndpoint);
 		LoginResponse.prettyPrint();
 		System.out.println("?????? " + LoginResponse);
@@ -64,7 +69,9 @@ public class UserClient {
 		String CreateCart = EndpointConfig.getEndpoint("cart", "createCart");
 
 		// Add cart
-		Response Cart_Creation_response = RestAssured.given().header("Authorization", "Bearer " + Access_Token)
+		Response Cart_Creation_response = RestAssured.given()
+				.filter(new RestAssuredListener())
+				.header("Authorization", "Bearer " + Access_Token)
 				.contentType(ContentType.JSON).post(CreateCart);
 
 		return Cart_Creation_response;

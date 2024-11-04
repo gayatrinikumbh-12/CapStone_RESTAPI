@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="piku_mau.LoginAPI">
+      <class name="piku_mau.CartCreation">
         <methods>
           <include name="beforeTestMesthod"/>
-          <include name="verifySuccessfulLoginWithValidCredentials"/>
+          <include name="cart_already_exists_for_user"/>
           <include name="tearDown"/>
           <include name="afterTestMethod"/>
           <include name="setBaseURI"/>
         </methods>
-      </class> <!-- piku_mau.LoginAPI -->
+      </class> <!-- piku_mau.CartCreation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

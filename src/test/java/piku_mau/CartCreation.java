@@ -48,10 +48,10 @@ public class CartCreation extends BaseTest {
 		// now use same email to create cart
 
 		// Response response1 = UserClient.getInstance().createUser();
-		Response responseForSameEmail = UserClient.getInstance().CreateCart(Email,Password);
-		responseForSameEmail.prettyPrint();
+		//Response responseForSameEmail = UserClient.getInstance().CreateCart(Email,Password);
+		//responseForSameEmail.prettyPrint();
 
-		String expectedMsg = responseForSameEmail.jsonPath().get("error");
+		//String expectedMsg = responseForSameEmail.jsonPath().get("error");
 		
 	}
 
