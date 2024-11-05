@@ -37,6 +37,7 @@ public abstract class BaseTest {
 	
 	@BeforeClass
 	public void setBaseURI() {
+		logger.info("Test case initiated for /s: {}", this.getClass().toString());
 		String baseUrl = PropertyUtils.getProperty("base.url");
 		System.out.println(baseUrl);
 		RestAssured.baseURI = baseUrl;
@@ -47,12 +48,12 @@ public abstract class BaseTest {
 	@AfterClass
 	public void tearDown() {
 		// Code to be executed after all tests
-
+		
 	}
 
 	@BeforeMethod
 	protected void beforeTestMesthod() {
-
+		logger.info("[{}] - [{}] - {}", this.getClass().getSimpleName(), Thread.currentThread().getName(), "Starting Test Case ");
 		
 		RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 		//RandomNumberGenrator RG = new RandomNumberGenrator();
@@ -70,14 +71,17 @@ public abstract class BaseTest {
 	@AfterMethod
 	protected void AfterTestMesthod(ITestResult result) {
 
+		
 		if(result.getStatus()==ITestResult.FAILURE)
 		{
 			Throwable t = result.getThrowable();
 			StringWriter error = new StringWriter();
 			t.printStackTrace(new PrintWriter(error));
 			logger.info(error.toString());
+		
+		logger.error("Test case '{}' failed with error: {}", result.getMethod().getMethodName(), error.toString());
 		}
-
+		logger.debug("Reviewing logs for test case '{}' to ensure diagnostic details are captured.", result.getMethod().getMethodName());
 	}
 	
 	

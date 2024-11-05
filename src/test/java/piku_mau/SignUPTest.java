@@ -19,11 +19,11 @@ import utilies.BaseTest;
 
 public class SignUPTest extends BaseTest {
 	String email;
-	private static final Logger testLogger = LogManager.getLogger("TestLogger");
+	
 
 	@Test
 	public void shouldCreateNewUserSuccessfully() throws IOException {
-		testLogger.info("Starting test case for shouldCreateNewUserSuccessfully functionality");
+		
 		userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
@@ -34,8 +34,7 @@ public class SignUPTest extends BaseTest {
 		assertNotNull(headers.get("Content-Type"), "Content-Type header should not be null");
 		assertEquals(headers.getValue("Content-Type"), "application/json; charset=utf-8", "Unexpected Content-Type");
 		email = userSignupResponse.getData().getUser().getEmail();
-		 testLogger.debug("More detailed debug message");
-		 testLogger.error("Test failed with error: {}");
+		 
 
 	}
 
