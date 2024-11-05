@@ -19,13 +19,14 @@ import utilies.BaseTest;
 
 public class SignUPTest extends BaseTest {
 	String email;
-	
+	private static final Logger logger = LogManager.getLogger(SignUPTest.class);
 
 	@Test
 	public void shouldCreateNewUserSuccessfully() throws IOException {
-		
+		 logger.info("Creating a new user with email: {}", BaseTest.getUserEmail());
 		userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
+		logger.info("Response received with status code: {}", response.getStatusCode());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
 				// Using the new assertion method within the POJO
 		userSignupResponse.assertUserCreatedSuccessfully();

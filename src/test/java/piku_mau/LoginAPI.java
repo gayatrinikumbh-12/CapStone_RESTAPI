@@ -3,6 +3,8 @@ package piku_mau;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import clients.UserClient;
@@ -14,12 +16,13 @@ import utilies.AssertionsUtil;
 import utilies.BaseTest;
 
 public class LoginAPI extends BaseTest {
-
+	private static final Logger logger = LogManager.getLogger(LoginAPI.class);
 	@Test
 	public void verifySuccessfulLoginWithValidCredentials() {
 		// Response response2 = UserClient.getInstance().createUser();
 		
 		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
+		logger.info("Response received with status code: {}", response.getStatusCode());
 		System.out.println("login yes "+response.prettyPrint());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
 
