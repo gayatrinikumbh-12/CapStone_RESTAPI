@@ -21,6 +21,7 @@ public class CartCreation extends BaseTest {
 	@Test
 	void create_new_cart_for_user() throws IOException {
 		// Response response1 = UserClient.getInstance().createUser();
+	    logger.info("Starting 'create_new_cart_for_user' test case");
 		Response response = UserClient.getInstance().CreateCart(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		response.prettyPrint();
 		logger.info("Response received with status code: {}", response.getStatusCode());
@@ -32,12 +33,14 @@ public class CartCreation extends BaseTest {
 		
 		AssertionsUtil.assertStatusCode(response, 201);
 		AssertionsUtil.assertStatusLine(response, "HTTP/1.1 201 Created");
-		
+		logger.info("'create_new_cart_for_user' executed successfully");
 
 	}
 
 	@Test
 	void cart_already_exists_for_user() throws IOException {
+		
+		logger.info("Starting 'cart_already_exists_for_user' test case");
 		String Email = BaseTest.getUserEmail();
 		String Password = BaseTest.getuserPassword();
 		Response response = UserClient.getInstance().CreateCart(Email,Password);
@@ -47,7 +50,7 @@ public class CartCreation extends BaseTest {
 		CartRequest UR = response.as(CartRequest.class);
 		String CreatedUser = UR.getUser_id();
 		System.out.println("piku " + CreatedUser);
-
+		logger.info("'cart_already_exists_for_user' executed successfully");
 		// now use same email to create cart
 
 		// Response response1 = UserClient.getInstance().createUser();

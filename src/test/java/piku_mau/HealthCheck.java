@@ -14,13 +14,13 @@ public class HealthCheck extends BaseTest {
 	private static final Logger logger = LogManager.getLogger(HealthCheck.class);
 	@Test
  	void shouldReturnOKForHealthCheck() {
-		
+		 logger.info("Starting 'shouldReturnOKForHealthCheck' test case");
 		String uri = "/health-check";
 		Response response = RestAssured.given().contentType(ContentType.JSON).get(uri);
 		logger.info("Response received with status code: {}", response.getStatusCode());
 		response.prettyPrint();
 		AssertionsUtil.assertResponseNotEmpty(response);
 		AssertionsUtil.assertStatusCode(response,200);
-		
+		logger.info("'shouldReturnOKForHealthCheck' has been successfully created.", userEmail);
 	}
 }

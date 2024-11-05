@@ -20,7 +20,7 @@ public class LoginAPI extends BaseTest {
 	@Test
 	public void verifySuccessfulLoginWithValidCredentials() {
 		// Response response2 = UserClient.getInstance().createUser();
-		
+		 logger.info("Starting 'verifySuccessfulLoginWithValidCredentials' test case");
 		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		logger.info("Response received with status code: {}", response.getStatusCode());
 		System.out.println("login yes "+response.prettyPrint());
@@ -37,6 +37,6 @@ public class LoginAPI extends BaseTest {
 
 		assertNotNull(headers.get("Content-Type"), "Content-Type header should not be null");
 		assertEquals(headers.getValue("Content-Type"), "application/json; charset=utf-8", "Unexpected Content-Type");
-
+		logger.info("'verifySuccessfulLoginWithValidCredentials' has been successfully created.", userEmail);
 	}
 }

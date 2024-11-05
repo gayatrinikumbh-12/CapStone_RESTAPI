@@ -24,7 +24,8 @@ public class SignUPTest extends BaseTest {
 	@Test
 	public void shouldCreateNewUserSuccessfully() throws IOException {
 		 logger.info("Creating a new user with email: {}", BaseTest.getUserEmail());
-		userEmail.get();
+		
+		 userEmail.get();
 		Response response = UserClient.getInstance().createUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
 		logger.info("Response received with status code: {}", response.getStatusCode());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);
@@ -35,7 +36,7 @@ public class SignUPTest extends BaseTest {
 		assertNotNull(headers.get("Content-Type"), "Content-Type header should not be null");
 		assertEquals(headers.getValue("Content-Type"), "application/json; charset=utf-8", "Unexpected Content-Type");
 		email = userSignupResponse.getData().getUser().getEmail();
-		 
+		logger.info("User with email '{}' has been successfully created.", userEmail);
 
 	}
 
