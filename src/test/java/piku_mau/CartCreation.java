@@ -7,6 +7,12 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import clients.UserClient;
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -16,9 +22,14 @@ import utilies.AssertionsUtil;
 import utilies.BaseTest;
 
 
+@Epic("Epic - 04")
+@Feature("Cart functionality ")
 public class CartCreation extends BaseTest {
 	private static final Logger logger = LogManager.getLogger(CartCreation.class);
-	@Test
+	@Story("Story 4 - Cart")
+	@Test(description ="create_new_cart_for_user test")
+	@Description("check Cart functionality")
+	@Severity(SeverityLevel.NORMAL)
 	void create_new_cart_for_user() throws IOException {
 		// Response response1 = UserClient.getInstance().createUser();
 	    logger.info("Starting 'create_new_cart_for_user' test case");
@@ -37,7 +48,10 @@ public class CartCreation extends BaseTest {
 
 	}
 
-	@Test
+	@Story("Story 4 - Cart")
+	@Test(description ="cart_already_exists_for_user test")
+	@Description("check Cart functionality")
+	@Severity(SeverityLevel.NORMAL)
 	void cart_already_exists_for_user() throws IOException {
 		
 		logger.info("Starting 'cart_already_exists_for_user' test case");

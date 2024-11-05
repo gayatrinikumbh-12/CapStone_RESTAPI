@@ -8,16 +8,26 @@ import org.apache.logging.log4j.Logger;
 import org.testng.annotations.Test;
 
 import clients.UserClient;
-
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Severity;
+import io.qameta.allure.SeverityLevel;
+import io.qameta.allure.Story;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import models.UserSignupResponse;
 import utilies.AssertionsUtil;
 import utilies.BaseTest;
 
+@Epic("Epic - 03")
+@Feature("Login functionality ")
 public class LoginAPI extends BaseTest {
 	private static final Logger logger = LogManager.getLogger(LoginAPI.class);
-	@Test
+	@Story("Story 3 - LogIn")
+	@Test(description ="verifySuccessfulLoginWithValidCredentials test")
+	@Description("check LogIn functionality")
+	@Severity(SeverityLevel.CRITICAL)
 	public void verifySuccessfulLoginWithValidCredentials() {
 		// Response response2 = UserClient.getInstance().createUser();
 		 logger.info("Starting 'verifySuccessfulLoginWithValidCredentials' test case");

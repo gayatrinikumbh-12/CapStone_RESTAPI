@@ -38,6 +38,7 @@ public abstract class BaseTest {
 	@BeforeClass
 	public void setBaseURI() {
 		logger.info("Test case initiated for /s: {}", this.getClass().toString());
+		RestAssured.reset(); // Add this to reset RestAssured configuration before each test
 		String baseUrl = PropertyUtils.getProperty("base.url");
 		System.out.println(baseUrl);
 		RestAssured.baseURI = baseUrl;
