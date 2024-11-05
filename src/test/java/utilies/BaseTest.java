@@ -62,13 +62,13 @@ public abstract class BaseTest {
 		//RandomNumberGenrator RG = new RandomNumberGenrator();
 		//String randomEmail = RG.randomEmail();
 		
-		/*
+		
 		Faker faker = new Faker();
 	    String email_f = faker.internet().emailAddress();
 	    String password_f = faker.internet().password(8, 16);
 		userEmail.set(email_f);
 		userPassword.set(password_f);
-		*/
+		
 	}
 	
 	@AfterMethod
