@@ -2,39 +2,51 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-11-05T18:23:08 IST" name="Default suite" finished-at="2024-11-05T18:23:13 IST" duration-ms="4540">
+  <suite started-at="2024-11-05T22:45:53 IST" name="Default suite" finished-at="2024-11-05T22:45:58 IST" duration-ms="5163">
     <groups>
     </groups>
-    <test started-at="2024-11-05T18:23:08 IST" name="Default test" finished-at="2024-11-05T18:23:13 IST" duration-ms="4540">
+    <test started-at="2024-11-05T22:45:53 IST" name="Default test" finished-at="2024-11-05T22:45:58 IST" duration-ms="5163">
       <class name="piku_mau.SignUPTest">
-        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku_mau.SignUPTest@5f8890c2]" started-at="2024-11-05T18:23:08 IST" name="setBaseURI" finished-at="2024-11-05T18:23:09 IST" duration-ms="487" status="PASS">
+        <test-method is-config="true" signature="setBaseURI()[pri:0, instance:piku_mau.SignUPTest@4a60ee36]" started-at="2024-11-05T22:45:53 IST" name="setBaseURI" finished-at="2024-11-05T22:45:53 IST" duration-ms="498" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setBaseURI -->
-        <test-method is-config="true" signature="beforeTestMesthod()[pri:0, instance:piku_mau.SignUPTest@5f8890c2]" started-at="2024-11-05T18:23:09 IST" name="beforeTestMesthod" finished-at="2024-11-05T18:23:09 IST" duration-ms="244" status="PASS">
+        <test-method is-config="true" signature="beforeTestMesthod()[pri:0, instance:piku_mau.SignUPTest@4a60ee36]" started-at="2024-11-05T22:45:54 IST" name="beforeTestMesthod" finished-at="2024-11-05T22:45:54 IST" duration-ms="4" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTestMesthod -->
-        <test-method signature="shouldCreateNewUserSuccessfully()[pri:0, instance:piku_mau.SignUPTest@5f8890c2]" started-at="2024-11-05T18:23:09 IST" name="shouldCreateNewUserSuccessfully" finished-at="2024-11-05T18:23:13 IST" duration-ms="3506" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- shouldCreateNewUserSuccessfully -->
-        <test-method is-config="true" signature="AfterTestMesthod(org.testng.ITestResult)[pri:0, instance:piku_mau.SignUPTest@5f8890c2]" started-at="2024-11-05T18:23:13 IST" name="AfterTestMesthod" finished-at="2024-11-05T18:23:13 IST" duration-ms="7" status="PASS">
+        <test-method signature="shouldCreateNewUserSuccessfully(java.lang.String,java.lang.String)[pri:0, instance:piku_mau.SignUPTest@4a60ee36]" started-at="2024-11-05T22:45:54 IST" name="shouldCreateNewUserSuccessfully" description="shouldCreateNewUserSuccessfully test" data-provider="userDataProvider" finished-at="2024-11-05T22:45:58 IST" duration-ms="4125" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=shouldCreateNewUserSuccessfully status=SUCCESS method=SignUPTest.shouldCreateNewUserSuccessfully()[pri:0, instance:piku_mau.SignUPTest@5f8890c2] output={null}]]]>
+                <![CDATA[desmond.feeney@yahoo.com]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[wrbw4k4ete2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- shouldCreateNewUserSuccessfully -->
+        <test-method is-config="true" signature="AfterTestMesthod(org.testng.ITestResult)[pri:0, instance:piku_mau.SignUPTest@4a60ee36]" started-at="2024-11-05T22:45:58 IST" name="AfterTestMesthod" finished-at="2024-11-05T22:45:58 IST" duration-ms="7" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=shouldCreateNewUserSuccessfully status=SUCCESS method=SignUPTest.shouldCreateNewUserSuccessfully(java.lang.String,java.lang.String)[pri:0, instance:piku_mau.SignUPTest@4a60ee36] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- AfterTestMesthod -->
-        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:piku_mau.SignUPTest@5f8890c2]" started-at="2024-11-05T18:23:13 IST" name="afterTestMethod" finished-at="2024-11-05T18:23:13 IST" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="afterTestMethod()[pri:0, instance:piku_mau.SignUPTest@4a60ee36]" started-at="2024-11-05T22:45:58 IST" name="afterTestMethod" finished-at="2024-11-05T22:45:58 IST" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTestMethod -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:piku_mau.SignUPTest@5f8890c2]" started-at="2024-11-05T18:23:13 IST" name="tearDown" finished-at="2024-11-05T18:23:13 IST" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:piku_mau.SignUPTest@4a60ee36]" started-at="2024-11-05T22:45:58 IST" name="tearDown" finished-at="2024-11-05T22:45:58 IST" duration-ms="2" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->

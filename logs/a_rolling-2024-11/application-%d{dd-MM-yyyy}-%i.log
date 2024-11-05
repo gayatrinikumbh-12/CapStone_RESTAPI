@@ -1,2 +1,15 @@
 2024-11-05T18:23:08,667 [main] INFO  (BaseTest.java:40) - Test case initiated for /s: class piku_mau.SignUPTest
 2024-11-05T18:23:09,131 [main] INFO  (BaseTest.java:56) - [SignUPTest] - [main] - Starting Test Case XYZ
+2024-11-05T21:56:32,273 [main] INFO  BaseTest - Test case initiated for /s: class piku_mau.SignUPTest
+2024-11-05T22:02:26,402 [main] INFO  BaseTest - Test case initiated for /s: class piku_mau.HealthCheck
+2024-11-05T22:02:26,833 [main] INFO  BaseTest - [HealthCheck] - [main] - Starting Test Case 
+2024-11-05T22:02:26,958 [main] INFO  HealthCheck - Starting 'shouldReturnOKForHealthCheck' test case
+2024-11-05T22:02:29,528 [main] INFO  HealthCheck - Response received with status code: 200
+2024-11-05T22:02:29,534 [main] INFO  HealthCheck - 'shouldReturnOKForHealthCheck' has been successfully created.
+2024-11-05T22:02:38,478 [main] INFO  BaseTest - Test case initiated for /s: class piku_mau.SignUPTest
+2024-11-05T22:45:18,397 [main] INFO  BaseTest - Test case initiated for /s: class piku_mau.LoginAPI
+2024-11-05T22:45:53,354 [main] INFO  BaseTest - Test case initiated for /s: class piku_mau.SignUPTest
+2024-11-05T22:45:54,014 [main] INFO  BaseTest - [SignUPTest] - [main] - Starting Test Case 
+2024-11-05T22:45:54,350 [main] INFO  SignUPTest - Creating a new user with email: desmond.feeney@yahoo.com
+2024-11-05T22:45:58,346 [main] INFO  SignUPTest - Response received with status code: 201
+2024-11-05T22:45:58,382 [main] INFO  SignUPTest - User with email 'java.lang.ThreadLocal@2cb53bfc' has been successfully created.

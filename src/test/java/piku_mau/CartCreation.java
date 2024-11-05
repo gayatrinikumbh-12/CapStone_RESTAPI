@@ -4,7 +4,10 @@ import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.github.javafaker.Faker;
 
 import clients.UserClient;
 import io.qameta.allure.Description;
@@ -25,9 +28,24 @@ import utilies.BaseTest;
 @Epic("Epic - 04")
 @Feature("Cart functionality ")
 public class CartCreation extends BaseTest {
+	
+	@DataProvider
+	public Object[][] userDataProvider() {
+		Faker faker = new Faker();
+	    String email_f = faker.internet().emailAddress();
+	    String password_f = faker.internet().password(8, 16);
+		userEmail.set(email_f);
+		userPassword.set(password_f);
+	    return new Object[][] {
+	    	
+	        {email_f, password_f}
+	        
+	    };
+	}
+	
 	private static final Logger logger = LogManager.getLogger(CartCreation.class);
 	@Story("Story 4 - Cart")
-	@Test(description ="create_new_cart_for_user test")
+	@Test(description ="create_new_cart_for_user test",dataProvider = "userDataProvider")
 	@Description("check Cart functionality")
 	@Severity(SeverityLevel.NORMAL)
 	void create_new_cart_for_user() throws IOException {
@@ -49,7 +67,7 @@ public class CartCreation extends BaseTest {
 	}
 
 	@Story("Story 4 - Cart")
-	@Test(description ="cart_already_exists_for_user test")
+	@Test(description ="cart_already_exists_for_user test",dataProvider = "userDataProvider")
 	@Description("check Cart functionality")
 	@Severity(SeverityLevel.NORMAL)
 	void cart_already_exists_for_user() throws IOException {

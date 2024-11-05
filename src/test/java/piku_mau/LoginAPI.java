@@ -5,7 +5,11 @@ import static org.testng.Assert.assertNotNull;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.ITestContext;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+
+import com.github.javafaker.Faker;
 
 import clients.UserClient;
 import io.qameta.allure.Description;
@@ -23,15 +27,33 @@ import utilies.BaseTest;
 @Epic("Epic - 03")
 @Feature("Login functionality ")
 public class LoginAPI extends BaseTest {
+	
+	@DataProvider
+	public Object[][] userDataProvider() {
+		Faker faker = new Faker();
+	    String email_f = faker.internet().emailAddress();
+	    String password_f = faker.internet().password(8, 16);
+		userEmail.set(email_f);
+		userPassword.set(password_f);
+	    return new Object[][] {
+	    	
+	        {email_f, password_f}
+	        
+	    };
+	}
+
+	
 	private static final Logger logger = LogManager.getLogger(LoginAPI.class);
 	@Story("Story 3 - LogIn")
-	@Test(description ="verifySuccessfulLoginWithValidCredentials test")
+	@Test(description ="verifySuccessfulLoginWithValidCredentials test",dependsOnMethods = { "shouldCreateNewUserSuccessfully" })
 	@Description("check LogIn functionality")
 	@Severity(SeverityLevel.CRITICAL)
-	public void verifySuccessfulLoginWithValidCredentials() {
+	public void verifySuccessfulLoginWithValidCredentials(ITestContext context) {
 		// Response response2 = UserClient.getInstance().createUser();
 		 logger.info("Starting 'verifySuccessfulLoginWithValidCredentials' test case");
-		Response response = UserClient.getInstance().authenticateUser(BaseTest.getUserEmail(), BaseTest.getuserPassword());
+		 String em =(String) context.getAttribute("email");
+		 String pa =(String) context.getAttribute("pass");
+		Response response = UserClient.getInstance().authenticateUser(em,pa);
 		logger.info("Response received with status code: {}", response.getStatusCode());
 		System.out.println("login yes "+response.prettyPrint());
 		UserSignupResponse userSignupResponse = response.as(UserSignupResponse.class);

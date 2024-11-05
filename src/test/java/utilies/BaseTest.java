@@ -7,6 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
 import com.github.javafaker.Faker;
 
@@ -51,6 +52,7 @@ public abstract class BaseTest {
 		// Code to be executed after all tests
 		
 	}
+	
 
 	@BeforeMethod
 	protected void beforeTestMesthod() {
@@ -60,13 +62,13 @@ public abstract class BaseTest {
 		//RandomNumberGenrator RG = new RandomNumberGenrator();
 		//String randomEmail = RG.randomEmail();
 		
-
+		/*
 		Faker faker = new Faker();
 	    String email_f = faker.internet().emailAddress();
 	    String password_f = faker.internet().password(8, 16);
 		userEmail.set(email_f);
 		userPassword.set(password_f);
-
+		*/
 	}
 	
 	@AfterMethod
