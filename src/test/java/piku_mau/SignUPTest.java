@@ -55,5 +55,7 @@ public class SignUPTest extends BaseTest {
 		logger.info("User with email '{}' has been successfully created.", userEmail);
 		
 	}
+	
+	
 
 }

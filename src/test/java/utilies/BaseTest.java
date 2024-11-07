@@ -22,6 +22,8 @@ import org.hamcrest.Matchers;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
+
+import io.qameta.allure.Allure;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import piku_mau.SignUPTest;
@@ -103,6 +105,13 @@ public abstract class BaseTest {
 		userEmail.remove();
 
 	}
+	
+	@AfterMethod
+	   public void logFailure(ITestResult result) {
+	       if (result.getStatus() == ITestResult.FAILURE) {
+	           Allure.addAttachment("Stack Trace", result.getThrowable().toString());
+	       }
+	   }
 	
 	
 
